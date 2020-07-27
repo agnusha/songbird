@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "react-app",
+        "airbnb-base"
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        }
+    },
+    "rules": {
+        "no-shadow": "off",
+        "import/extensions": "off",
+        "linebreak-style":  "off"
+    }
+}
