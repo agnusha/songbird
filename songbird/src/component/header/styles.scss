@@ -1,0 +1,38 @@
+$border: #dee2e6;
+$white: #fff;
+$dark-green: green;
+
+.songbird-logo {
+    width: 150px;
+    height: auto;
+}
+
+#basic-navbar-nav .header-nav {
+    border-radius: 0.35rem;
+    .header-nav__link {
+        position: relative;
+        display: block;
+        padding: 0.75rem 0.95rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: $dark-green;
+        background-color: $white;
+        border: 1px solid $border;
+
+        &:hover {
+            z-index: 2;
+            color: $white;
+            text-decoration: none;
+            background-color: $dark-green;
+            border-color: $border;
+        }
+        &:first-child {
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+        }
+        &:last-child {
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+    }
+}
