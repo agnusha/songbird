@@ -36,10 +36,7 @@ class Header extends Component {
             </Nav>
 
             <h4>
-              Score:
-              <Badge variant="secondary" className="header-score">
-                0
-              </Badge>
+              Score: <Badge variant="secondary" className="header-score">0</Badge>
             </h4>
           </Navbar.Collapse>
         </Navbar>
