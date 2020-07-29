@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import "./styles.scss";
 
-class Checkbox extends React.Component {
+class Checkbox extends Component {
   static propTypes = {
     checked: PropTypes.bool,
     disabled: PropTypes.bool,

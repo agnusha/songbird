@@ -8,18 +8,26 @@ class Option extends Component {
   render() {
     return (
       <Container className="rounded-container option">
-        <Row>
-          Variant 1
-          <Checkbox checked /> Variant 2
-          <Checkbox disabled />
-
+        <Row className="rounded-container__row">
+          <Checkbox checked /> Variant 1
         </Row>
-        <Row>
-          Variant 2
-      </Row>
-        <Row>
-          Variant 3
-    </Row>
+
+        <Row className="rounded-container__row">
+          <Checkbox /> Variant 1
+        </Row>
+
+        <Row className="rounded-container__row">
+          <Checkbox checked /> Variant 1
+        </Row>
+
+        <Row className="rounded-container__row">
+          <Checkbox checked /> Variant 1
+        </Row>
+
+        <Row className="rounded-container__row">
+          <Checkbox checked /> Variant 1
+        </Row>
+
       </Container>
     );
   }

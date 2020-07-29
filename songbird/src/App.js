@@ -6,25 +6,27 @@ import Question from "./component/question/index";
 import Option from "./component/option/index";
 import Description from "./component/description/index";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 function App() {
   return (
     <div className="songbird-app">
       <Header></Header>
       <Container>
-        <Row>
+        <Row className="mb-5">
           <Question></Question>
         </Row>
-        <Row>
-          <Col>
+        <Row className="mb-5">
+          <Col className="p-0 mr-4">
             <Option></Option>
           </Col>
-          <Col>
+          <Col className="p-0 ml-4">
             <Description></Description>
           </Col>
         </Row>
-        <Row></Row>
+        <Row>
+          <Button className="songbird-app__button" variant="success" size="lg" block>Next level</Button>
+        </Row>
       </Container>
     </div>
   );
