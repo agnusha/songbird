@@ -7,7 +7,7 @@ import "./styles.scss";
 class Option extends Component {
   render() {
     return (
-      <Container className="rounded-container option">
+      <Container className="rounded-container option main-container">
         <Row className="rounded-container__row">
           <Checkbox checked /> Variant 1
         </Row>
