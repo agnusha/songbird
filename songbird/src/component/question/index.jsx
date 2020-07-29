@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./assets/images/logo.jpg";
 
-import { Navbar, Nav, Badge, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
 
 class Question extends Component {

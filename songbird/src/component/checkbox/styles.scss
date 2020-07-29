@@ -1,0 +1,52 @@
+$brand: #6af398;
+$checkboxSize: 2rem;
+$uncheckedBG: black;
+$checkedBG: $brand;
+$checkedColor: black;
+$disabledBG: rgba(0, 0, 0, 0.35);
+
+.checkbox-container__input {
+    display: none;
+}
+
+.checkbox-container__input {
+    + span {
+        display: flex;
+        position: relative;
+        transform: translate(0, -25%);
+        width: $checkboxSize;
+        height: $checkboxSize;
+        background: $uncheckedBG;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin: 5px;
+        border: 0px solid $brand;
+        border-radius: 50%;
+        box-sizing: border-box;
+        transition: all 150ms;
+    }
+    &:checked {
+        + span {
+            border-width: $checkboxSize / 2;
+            &::before {
+                content: "";
+                width: 20px;
+                height: 20px;
+                background-image: url(./assets/images/tick.svg);
+                background-size: cover;
+                color: $checkedColor;
+                background-position: center;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    &:disabled {
+        + span {
+            background: $disabledBG;
+        }
+    }
+}
