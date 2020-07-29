@@ -7,6 +7,9 @@ import Option from "./component/option/index";
 import Description from "./component/description/index";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
+import birdsData from "./data/birds";
+
+
 
 function App() {
   return (
