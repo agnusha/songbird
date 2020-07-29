@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import logo from "./assets/images/logo.jpg";
 
-import { Navbar, Nav, Badge } from "react-bootstrap";
+import { Navbar, Nav, Badge, Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
 
-class Header extends Component {
+class Option extends Component {
   render() {
     return (
       <header className="header">
@@ -36,7 +36,7 @@ class Header extends Component {
             </Nav>
 
             <h4>
-              Score:
+              Score:{" "}
               <Badge variant="secondary" className="header-score">
                 0
               </Badge>
@@ -48,4 +48,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Option;
