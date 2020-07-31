@@ -21,36 +21,38 @@ class Description extends Component {
 
     return (
       <div>
-        <Container className="rounded-container description main-container">
-          <Row className="mb-2">
-            <Col md={12}>
-              <p>Послушайте плеер.</p>
-              <p>Выберите птицу из списка.</p>
-            </Col>
-          </Row>
-        </Container>
-        <Container className="rounded-container description main-container">
-          <Row className="mb-2">
-            <Col md={5}>
-              <img src={bird.image} className="description-img bordered-img" alt="logo" />
-            </Col>
-            <Col md={7}>
-              <h4>{bird.name}</h4>
-              <h5>{bird.species} </h5>
-              <AudioPlayer
-                src={bird.audio}
-              />
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col md="auto">
-              <p>
-                {bird.description}
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+        {bird === null
+          ? < Container className="rounded-container description main-container">
+            <Row className="mb-2">
+              <Col md={12}>
+                <p>Послушайте плеер.</p>
+                <p>Выберите птицу из списка.</p>
+              </Col>
+            </Row>
+          </ Container>
+          : <Container className="rounded-container description main-container">
+            <Row className="mb-2">
+              <Col md={5}>
+                <img src={bird.image} className="description-img bordered-img" alt="logo" />
+              </Col>
+              <Col md={7}>
+                <h4>{bird.name}</h4>
+                <h5>{bird.species} </h5>
+                <AudioPlayer
+                  src={bird.audio}
+                />
+              </Col>
+            </Row>
+            <Row className="mb-2">
+              <Col md="auto">
+                <p>
+                  {bird.description}
+                </p>
+              </Col>
+            </Row>
+          </Container>
+        }
+      </div >
 
 
 

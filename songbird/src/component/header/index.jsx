@@ -18,7 +18,7 @@ class Header extends Component {
             </Col>
             <Col md="auto" className="margined-col mr-auto">
               <ul className="pagination">
-                {categories.map((item, i) => <li className="page-item" key={i}> <span className="page-link" id={item.id} href="#">{item.name}</span></li>)}
+                {categories.map((item, i) => <li className="page-item" key={i}> <span className="page-link" id={item.id}>{item.name}</span></li>)}
               </ul>
             </Col>
             <Col md="auto" className="margined-col">
