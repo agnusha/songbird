@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import logo from "./assets/images/logo.jpg";
 import PropTypes from 'prop-types';
 
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/src/styles.scss';
+
 import { Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
 
@@ -26,7 +29,10 @@ class Question extends Component {
             <h4>
               {guessed ? bird.name : "*******"}
             </h4>
-            Here will be audioplayer
+
+            <AudioPlayer
+              src={bird.audio}
+            />
           </Col>
         </Row>
       </Container>
