@@ -17,8 +17,8 @@ class Header extends Component {
               <img src={logo} className="songbird-logo my-auto" alt="logo" />
             </Col>
             <Col md="auto" className="mr-auto my-auto">
-              <ul class="pagination">
-                {categories.map((item, i) => <li class="page-item"> <a className="page-link" id={item.id}>{item.name}</a></li>)}
+              <ul className="pagination">
+                {categories.map((item, i) => <li className="page-item" key={i}> <span className="page-link" id={item.id} href="#">{item.name}</span></li>)}
               </ul>
             </Col>
             <Col md="auto" className="my-auto">

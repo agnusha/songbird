@@ -8,10 +8,17 @@ import Description from "./component/description/index";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
 import birdsData from "./data/birds";
-
+import { shuffleArray } from './utils'
 
 
 function App() {
+  console.log(birdsData[0]);
+
+  const category = 0;
+  const sixWorkingItems = shuffleArray(birdsData[category]);
+  console.log(sixWorkingItems);
+
+
   return (
     <div className="songbird-app">
       <Header></Header>
