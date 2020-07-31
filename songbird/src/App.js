@@ -17,14 +17,13 @@ function App() {
   const currentItemNumber = 2;
   const sixWorkingItems = shuffleArray(birdsData[category]);
 
-
   console.log(sixWorkingItems);
   return (
     <div className="songbird-app">
       <Header category={category}></Header>
       <Container fluid className="container-content my-5">
         <Row className="mb-5">
-          <Question></Question>
+          <Question bird={sixWorkingItems[currentItemNumber]}></Question>
         </Row>
         <Row className="mb-5">
           <Col className="p-0 mr-4">
