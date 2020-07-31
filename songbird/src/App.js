@@ -14,7 +14,11 @@ import { shuffleArray } from './utils'
 function App() {
 
   const category = 0;
-  const currentItemNumber = 2;
+  const score = 0;
+
+  const currentRightItemNumber = 2;
+  const currentSelectedItemNumber = 3;
+
   const sixWorkingItems = shuffleArray(birdsData[category]);
 
   console.log(sixWorkingItems);
@@ -23,14 +27,14 @@ function App() {
       <Header category={category}></Header>
       <Container fluid className="container-content my-5">
         <Row className="mb-5">
-          <Question bird={sixWorkingItems[currentItemNumber]} guessed={false}></Question>
+          <Question bird={sixWorkingItems[currentRightItemNumber]} guessed={false}></Question>
         </Row>
-        <Row className="mb-5">
-          <Col className="p-0 mr-4">
-            <Option items={sixWorkingItems} currentItemNumber={currentItemNumber}></Option>
+        <Row className="mb-5 justify-content-md-between">
+          <Col md={5} className="p-0 mr-4">
+            <Option items={sixWorkingItems} currentItemNumber={currentRightItemNumber}></Option>
           </Col>
-          <Col className="p-0 ml-4">
-            <Description></Description>
+          <Col md={6} className="p-0 ml-4">
+            <Description bird={sixWorkingItems[currentSelectedItemNumber]}></Description>
           </Col>
         </Row>
         <Row>

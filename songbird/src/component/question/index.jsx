@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./assets/images/logo.jpg";
 import PropTypes from 'prop-types';
 
 import AudioPlayer from 'react-h5-audio-player';
@@ -23,7 +22,7 @@ class Question extends Component {
       <Container fluid className="rounded-container question">
         <Row>
           <Col md="auto">
-            <img src={logo} className="question-img" alt="logo" />
+            <img src={bird.image} className="question-img bordered-img" alt="logo" />
           </Col>
           <Col>
             <h4>

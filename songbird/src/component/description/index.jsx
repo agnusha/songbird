@@ -1,11 +1,24 @@
 import React, { Component } from "react";
-import logo from "./assets/images/logo.jpg";
+
+import PropTypes from 'prop-types';
+
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/src/styles.scss';
+
 
 import { Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
 
 class Description extends Component {
+  static propTypes = {
+    bird: PropTypes.object,
+  };
+
   render() {
+    const {
+      bird
+    } = this.props;
+
     return (
       <div>
         <Container className="rounded-container description main-container">
@@ -19,21 +32,21 @@ class Description extends Component {
         <Container className="rounded-container description main-container">
           <Row className="mb-2">
             <Col md={5}>
-              <img src={logo} className="description-img" alt="logo" />
+              <img src={bird.image} className="description-img bordered-img" alt="logo" />
             </Col>
             <Col md={7}>
-              <h4> Синица </h4>
-              <h5> Desc</h5>
-            Here will be audioplayer
-          </Col>
+              <h4>{bird.name}</h4>
+              <h5>{bird.species} </h5>
+              <AudioPlayer
+                src={bird.audio}
+              />
+            </Col>
           </Row>
           <Row className="mb-2">
             <Col md="auto">
               <p>
-                В щебетании синиц различают более 40 различных звуковых сочетаний.
-                Поют они практически круглый год, немного затихая только зимой.
-                Синицы настоящие санитары леса. Одна пара синиц в период гнездования оберегает от вредителей десятки деревьев.
-          </p>
+                {bird.description}
+              </p>
             </Col>
           </Row>
         </Container>
