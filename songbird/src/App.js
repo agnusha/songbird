@@ -19,6 +19,24 @@ class App extends Component {
     console.log(this);
   };
 
+  static defaultProps = {
+    category: 0,
+    score: 0,
+    level: 0,
+    currentRightItemNumber: Math.floor(Math.random() * (7)),
+    score: 0,
+    score: 0,
+    score: 0,
+
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentRightItemNumber: props.currentRightItemNumber,
+    };
+  };
+
   render() {
     const category = 0;
     const score = 0;
