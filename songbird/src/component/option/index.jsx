@@ -8,11 +8,12 @@ import "./styles.scss";
 class Option extends Component {
   static propTypes = {
     items: PropTypes.array,
+    currentItemNumber: PropTypes.number
   };
 
   render() {
     const {
-      items
+      items, currentItemNumber
     } = this.props;
 
 
@@ -20,7 +21,7 @@ class Option extends Component {
       <Container className="rounded-container option main-container">
         {items.map((item, i) =>
           <Row key={i} className="rounded-container__row">
-            <Checkbox id={item.id}></Checkbox> {item.name}
+            <Checkbox id={item.id} currentItemNumber={currentItemNumber}></Checkbox> {item.name}
           </Row>
         )}
       </Container>

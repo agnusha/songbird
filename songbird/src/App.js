@@ -14,7 +14,7 @@ import { shuffleArray } from './utils'
 function App() {
 
   const category = 0;
-  const currentItemNumber = 0;
+  const currentItemNumber = 2;
   const sixWorkingItems = shuffleArray(birdsData[category]);
 
 
@@ -28,7 +28,7 @@ function App() {
         </Row>
         <Row className="mb-5">
           <Col className="p-0 mr-4">
-            <Option items={sixWorkingItems}></Option>
+            <Option items={sixWorkingItems} currentItemNumber={currentItemNumber}></Option>
           </Col>
           <Col className="p-0 ml-4">
             <Description></Description>

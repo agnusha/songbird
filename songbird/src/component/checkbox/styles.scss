@@ -2,8 +2,9 @@ $brand: #6af398;
 $checkboxSize: 2rem;
 $uncheckedBG: black;
 $checkedBG: $brand;
+$wrongBG: #fa1b1b;
 $checkedColor: black;
-$disabledBG: rgba(0, 0, 0, 0.35);
+$disabledBG: #00000059;
 
 .checkbox-container__input {
     display: none;
@@ -26,6 +27,7 @@ $disabledBG: rgba(0, 0, 0, 0.35);
         box-sizing: border-box;
         transition: all 150ms;
     }
+
     &:checked {
         + span {
             border-width: $checkboxSize / 2;
@@ -46,7 +48,7 @@ $disabledBG: rgba(0, 0, 0, 0.35);
     }
     &:disabled {
         + span {
-            background: $disabledBG;
+            background: $wrongBG;
         }
     }
 }
