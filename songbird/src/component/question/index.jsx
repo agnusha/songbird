@@ -7,7 +7,7 @@ import "./styles.scss";
 class Question extends Component {
   render() {
     return (
-      <Container className="rounded-container question">
+      <Container fluid className="rounded-container question">
         <Row>
           <Col md="auto">
             <img src={logo} className="question-img" alt="logo" />

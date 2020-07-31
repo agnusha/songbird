@@ -5,6 +5,10 @@ body {
     background-color: #f1efc3b2 !important;
 }
 .songbird-app {
+    .container-content {
+        padding: 0 10%;
+    }
+
     .rounded-container {
         background-color: indigo;
         border-radius: 0.5em;

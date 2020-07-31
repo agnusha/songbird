@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="songbird-app">
       <Header></Header>
-      <Container className="my-5">
+      <Container fluid className="container-content my-5">
         <Row className="mb-5">
           <Question></Question>
         </Row>

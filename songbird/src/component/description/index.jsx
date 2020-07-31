@@ -9,10 +9,10 @@ class Description extends Component {
     return (
       <Container className="rounded-container description main-container">
         <Row className="mb-2">
-          <Col md="auto">
-            <img src={logo} className="question-img" alt="logo" />
+          <Col md={5}>
+            <img src={logo} className="description-img" alt="logo" />
           </Col>
-          <Col>
+          <Col md={7}>
             <h4>
               Синица
           </h4>
