@@ -23,7 +23,7 @@ function App() {
       <Header category={category}></Header>
       <Container fluid className="container-content my-5">
         <Row className="mb-5">
-          <Question bird={sixWorkingItems[currentItemNumber]}></Question>
+          <Question bird={sixWorkingItems[currentItemNumber]} guessed={false}></Question>
         </Row>
         <Row className="mb-5">
           <Col className="p-0 mr-4">

@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import logo from "./assets/images/logo.jpg";
+import PropTypes from 'prop-types';
 
 import { Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
 
 class Question extends Component {
+  static propTypes = {
+    bird: PropTypes.object,
+    guessed: PropTypes.bool,
+  };
+
   render() {
+    const {
+      bird, guessed
+    } = this.props;
+
     return (
       <Container fluid className="rounded-container question">
         <Row>
@@ -14,7 +24,7 @@ class Question extends Component {
           </Col>
           <Col>
             <h4>
-              Синица
+              {guessed ? bird.name : "*******"}
             </h4>
             Here will be audioplayer
           </Col>
