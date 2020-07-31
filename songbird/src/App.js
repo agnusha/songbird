@@ -12,30 +12,30 @@ import { shuffleArray } from './utils'
 
 
 function App() {
-  console.log(birdsData[0]);
 
   const category = 0;
+  const currentItemNumber = 0;
   const sixWorkingItems = shuffleArray(birdsData[category]);
+
+
   console.log(sixWorkingItems);
-
-
   return (
     <div className="songbird-app">
-      <Header></Header>
+      <Header category={category}></Header>
       <Container fluid className="container-content my-5">
         <Row className="mb-5">
           <Question></Question>
         </Row>
         <Row className="mb-5">
           <Col className="p-0 mr-4">
-            <Option></Option>
+            <Option items={sixWorkingItems}></Option>
           </Col>
           <Col className="p-0 ml-4">
             <Description></Description>
           </Col>
         </Row>
         <Row>
-          <Button className="songbird-app__button" variant="success" size="lg" block>Next level</Button>
+          <Button className="songbird-app__button" variant="success" size="lg" block onClick="changeLevel">Next level</Button>
         </Row>
       </Container>
     </div>
