@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Checkbox from "../checkbox/index";
 import PropTypes from 'prop-types';
 
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "./styles.scss";
 
 class Option extends Component {
@@ -13,26 +13,22 @@ class Option extends Component {
 
   constructor(props) {
     super(props);
-    console.log("constructor Option");
     this.state = {
       try: 0,
     };
-    this.child = React.createRef();
+
     console.log("-----------------");
-    console.log("try");
+    console.log("try in constructor option");
     console.log(this.state.try);
     console.log("-----------------");
+
   };
 
-  _handleClick = () => {
+  _changeTries = () => {
 
-
-    console.log(this);
-    console.log(this.child.current);
-    this.child.current._ChangeFromParent();
-
+    this.setState({ try: this.state.try + 1 })
     console.log("-----------------");
-    console.log("try");
+    console.log("try in _changeTries");
     console.log(this.state.try);
     console.log("-----------------");
 
@@ -49,9 +45,7 @@ class Option extends Component {
     return (
       <Container className="rounded-container option main-container">
         {items.map((item, i) =>
-          <Row key={i} className="rounded-container__row" onClick={this._handleClick}>
-            <Checkbox ref={this.child} id={item.id} currentRightItemNumber={currentRightItemNumber}></Checkbox> {item.name}
-          </Row>
+          <Checkbox key={i} id={item.id} name={item.name} onClick={this._changeTries} currentRightItemNumber={currentRightItemNumber}></Checkbox>
         )}
       </Container>
     );

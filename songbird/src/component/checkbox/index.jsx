@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import { Row } from "react-bootstrap";
 
 import "./styles.scss";
 
@@ -7,9 +8,11 @@ class Checkbox extends Component {
 
   static propTypes = {
     id: PropTypes.number,
+    name: PropTypes.string,
     currentRightItemNumber: PropTypes.number,
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
+    onClick: PropTypes.func,
   };
 
   static defaultProps = {
@@ -25,51 +28,34 @@ class Checkbox extends Component {
     };
   };
 
-  _ChangeFromParent = () => {
-
-    console.log("_ChangeFromParent");
-    console.log(this);
-
-    const { id, currentRightItemNumber } = this.props;
-
-    console.log(this);
-    console.log(id);
-    console.log(currentRightItemNumber);
-
-    if (id === (currentRightItemNumber + 1)) {
-      this.setState({
-        checked: !this.state.checked,
-        disabled: true,
-      });
-    }
-    else {
-      this.setState({
-        disabled: !this.state.disabled,
-      });
-    }
-
-
-  };
-
   _handleChange = () => {
     const { id, currentRightItemNumber } = this.props;
+    console.log("disabled");
 
     console.log(this);
     console.log(id);
     console.log(currentRightItemNumber);
+    console.log(this.state.disabled);
 
-    if (id === (currentRightItemNumber + 1)) {
-      this.setState({
-        checked: !this.state.checked,
-        disabled: true,
-      });
-    }
-    else {
-      this.setState({
-        disabled: !this.state.disabled,
-      });
-    }
 
+    if (this.state.disabled === false) {
+      if (id === (currentRightItemNumber + 1)) {
+        this.setState({
+          checked: !this.state.checked,
+          disabled: true,
+        });
+      }
+      else {
+        this.setState({
+          disabled: !this.state.disabled,
+        });
+      }
+
+      if (typeof this.props.onClick === 'function') {
+        this.props.onClick(this);
+      }
+
+    }
 
   };
 
@@ -77,20 +63,23 @@ class Checkbox extends Component {
     const { checked } = this.state;
     const { disabled } = this.state;
     return (
-      <div className="checkbox-container">
-        <label className='checkbox-container__label'>
-          <input
-            type="checkbox"
-            className="checkbox-container__input"
-            checked={checked}
-            disabled={disabled}
-            onChange={this._handleChange}
-          />
-          <span
-            className="checkbox-container__span"
-          />
-        </label>
-      </div>
+      <Row className="rounded-container__row" onClick={this._handleChange}>
+        <div className="checkbox-container"  >
+          <label className='checkbox-container__label'>
+            <input
+              type="checkbox"
+              className="checkbox-container__input"
+              disabled={disabled}
+              checked={checked}
+              onChange={(e) => { }}
+            />
+            <span
+              className="checkbox-container__span"
+            />
+          </label>
+        </div>
+        {this.props.name}
+      </Row>
     );
   }
 }
