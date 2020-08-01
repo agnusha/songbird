@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./component/header/index";
@@ -8,13 +8,9 @@ import Description from "./component/description/index";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
 import birdsData from "./data/birds";
-import { shuffleArray } from './utils'
-
-
-
+import { shuffleArray } from "./utils";
 
 class App extends Component {
-
   changeLevel = () => {
     console.log(this);
   };
@@ -23,11 +19,10 @@ class App extends Component {
     category: 0,
     score: 0,
     level: 0,
-    currentRightItemNumber: Math.floor(Math.random() * (7)),
+    currentRightItemNumber: Math.floor(Math.random() * 6),
     score: 0,
     score: 0,
     score: 0,
-
   };
 
   constructor(props) {
@@ -35,7 +30,7 @@ class App extends Component {
     this.state = {
       currentRightItemNumber: props.currentRightItemNumber,
     };
-  };
+  }
 
   render() {
     const category = 0;
@@ -44,26 +39,46 @@ class App extends Component {
     const currentRightItemNumber = 2;
     const currentSelectedItemNumber = 3;
 
-    const sixWorkingItems = shuffleArray(birdsData[category]);
+    // const sixWorkingItems = shuffleArray(birdsData[category]);
+    const sixWorkingItems = birdsData[category];
+
+    console.log("state");
+    console.log(this.state);
 
     console.log(sixWorkingItems);
     return (
-      <div className="songbird-app" >
+      <div className="songbird-app">
         <Header category={category}></Header>
         <Container fluid className="container-content my-5">
           <Row className="mb-5">
-            <Question bird={sixWorkingItems[currentRightItemNumber]} guessed={false}></Question>
+            <Question
+              bird={sixWorkingItems[this.state.currentRightItemNumber]}
+              guessed={false}
+            ></Question>
           </Row>
           <Row className="mb-5 justify-content-md-between">
             <Col md={5} className="p-0 mr-4">
-              <Option items={sixWorkingItems} currentItemNumber={currentRightItemNumber}></Option>
+              <Option
+                items={sixWorkingItems}
+                currentItemNumber={this.state.currentRightItemNumber}
+              ></Option>
             </Col>
             <Col md={6} className="p-0 ml-4">
-              <Description bird={sixWorkingItems[currentSelectedItemNumber]}></Description>
+              <Description
+                bird={sixWorkingItems[currentSelectedItemNumber]}
+              ></Description>
             </Col>
           </Row>
           <Row>
-            <Button className="songbird-app__button" variant="success" size="lg" block onClick={this.changeLevel}>Next level</Button>
+            <Button
+              className="songbird-app__button"
+              variant="success"
+              size="lg"
+              block
+              onClick={this.changeLevel}
+            >
+              Next level
+            </Button>
           </Row>
         </Container>
       </div>

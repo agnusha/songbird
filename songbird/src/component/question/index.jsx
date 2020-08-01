@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import defaultBird from "./images/bird.jpg";
 
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/src/styles.scss';
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/src/styles.scss";
 
 import { Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
@@ -14,24 +15,21 @@ class Question extends Component {
   };
 
   render() {
-    const {
-      bird, guessed
-    } = this.props;
+    const { bird, guessed } = this.props;
 
     return (
       <Container fluid className="rounded-container question">
         <Row>
           <Col md="auto">
-            <img src={bird.image} className="question-img bordered-img" alt="logo" />
+            <img
+              src={guessed ? bird.image : defaultBird}
+              className="question-img bordered-img"
+              alt="logo"
+            />
           </Col>
           <Col>
-            <h4>
-              {guessed ? bird.name : "*******"}
-            </h4>
-
-            <AudioPlayer
-              src={bird.audio}
-            />
+            <h4>{guessed ? bird.name : "*******"}</h4>
+            <AudioPlayer src={bird.audio} />
           </Col>
         </Row>
       </Container>
