@@ -25,6 +25,32 @@ class Checkbox extends Component {
     };
   };
 
+  _ChangeFromParent = () => {
+
+    console.log("_ChangeFromParent");
+    console.log(this);
+
+    const { id, currentRightItemNumber } = this.props;
+
+    console.log(this);
+    console.log(id);
+    console.log(currentRightItemNumber);
+
+    if (id === (currentRightItemNumber + 1)) {
+      this.setState({
+        checked: !this.state.checked,
+        disabled: true,
+      });
+    }
+    else {
+      this.setState({
+        disabled: !this.state.disabled,
+      });
+    }
+
+
+  };
+
   _handleChange = () => {
     const { id, currentRightItemNumber } = this.props;
 
