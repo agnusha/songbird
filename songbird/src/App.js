@@ -16,10 +16,10 @@ class App extends Component {
   };
 
   static defaultProps = {
+    currentRightItemNumber: Math.floor(Math.random() * 6),
     category: 0,
     score: 0,
     level: 0,
-    currentRightItemNumber: Math.floor(Math.random() * 6),
     score: 0,
     score: 0,
     score: 0,
@@ -60,7 +60,7 @@ class App extends Component {
             <Col md={5} className="p-0 mr-4">
               <Option
                 items={sixWorkingItems}
-                currentItemNumber={this.state.currentRightItemNumber}
+                currentRightItemNumber={this.state.currentRightItemNumber}
               ></Option>
             </Col>
             <Col md={6} className="p-0 ml-4">

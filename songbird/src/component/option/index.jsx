@@ -8,20 +8,61 @@ import "./styles.scss";
 class Option extends Component {
   static propTypes = {
     items: PropTypes.array,
-    currentItemNumber: PropTypes.number
+    currentRightItemNumber: PropTypes.number
+  };
+
+  constructor(props) {
+    super(props);
+    console.log("constructor Option");
+    this.state = {
+      try: 0,
+    };
+    console.log("-----------------");
+    console.log("try");
+    console.log(this.state.try);
+    console.log("-----------------");
+  };
+
+  _handleClick = () => {
+
+
+    console.log(this);
+
+    // if (id === currentRightItemNumber) {
+    //   this.setState({
+    //     checked: !this.state.checked,
+    //     disabled: true,
+    //     try: this.state.try,
+    //   });
+    // }
+    // else {
+    //   this.setState({
+    //     disabled: !this.state.disabled,
+    //     try: (this.state.try + 1),
+    //   });
+    // }
+
+
+    console.log("-----------------");
+    console.log("try");
+    console.log(this.state.try);
+    console.log("-----------------");
+
   };
 
   render() {
     const {
-      items, currentItemNumber
+      items, currentRightItemNumber
     } = this.props;
 
+    console.log("currentRightItemNumber");
+    console.log(currentRightItemNumber);
 
     return (
       <Container className="rounded-container option main-container">
         {items.map((item, i) =>
-          <Row key={i} className="rounded-container__row">
-            <Checkbox id={item.id} currentItemNumber={currentItemNumber}></Checkbox> {item.name}
+          <Row key={i} className="rounded-container__row" onClick={this._handleClick}>
+            <Checkbox id={item.id} currentRightItemNumber={currentRightItemNumber}></Checkbox> {item.name}
           </Row>
         )}
       </Container>

@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import "./styles.scss";
 
 class Checkbox extends Component {
+
   static propTypes = {
     id: PropTypes.number,
-    currentItemNumber: PropTypes.number,
+    currentRightItemNumber: PropTypes.number,
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
   };
@@ -25,19 +26,25 @@ class Checkbox extends Component {
   };
 
   _handleChange = () => {
-    const { id, currentItemNumber } = this.props;
+    const { id, currentRightItemNumber } = this.props;
 
     console.log(this);
     console.log(id);
-    console.log(currentItemNumber);
+    console.log(currentRightItemNumber);
 
-    if (id === currentItemNumber)
+    if (id === (currentRightItemNumber + 1)) {
       this.setState({
         checked: !this.state.checked,
+        disabled: true,
       });
-    else this.setState({
-      disabled: !this.state.disabled,
-    });
+    }
+    else {
+      this.setState({
+        disabled: !this.state.disabled,
+      });
+    }
+
+
   };
 
   render() {
