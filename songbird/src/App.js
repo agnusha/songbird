@@ -17,7 +17,7 @@ class App extends Component {
 
   static defaultProps = {
     currentRightItemNumber: Math.floor(Math.random() * 6),
-    category: 0,
+    currentSelectedItemNumber: null,
     score: 0,
     level: 0,
     score: 0,
@@ -29,15 +29,20 @@ class App extends Component {
     super(props);
     this.state = {
       currentRightItemNumber: props.currentRightItemNumber,
+      currentSelectedItemNumber: props.currentSelectedItemNumber,
     };
   }
+
+  _changeSelectedBird = (selectedBirdNumber) => {
+    console.log("----------_changeSelectedBird -------");
+    console.log(selectedBirdNumber);
+    this.setState({ currentSelectedItemNumber: selectedBirdNumber })
+  };
 
   render() {
     const category = 0;
     const score = 0;
 
-    const currentRightItemNumber = 2;
-    const currentSelectedItemNumber = 3;
 
     // const sixWorkingItems = shuffleArray(birdsData[category]);
     const sixWorkingItems = birdsData[category];
@@ -61,11 +66,12 @@ class App extends Component {
               <Option
                 items={sixWorkingItems}
                 currentRightItemNumber={this.state.currentRightItemNumber}
+                onClick={this._changeSelectedBird}
               ></Option>
             </Col>
             <Col md={6} className="p-0 ml-4">
               <Description
-                bird={sixWorkingItems[currentSelectedItemNumber]}
+                bird={this.state.currentSelectedItemNumber ? sixWorkingItems[this.state.currentSelectedItemNumber] : null}
               ></Description>
             </Col>
           </Row>

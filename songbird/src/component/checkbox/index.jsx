@@ -71,7 +71,10 @@ class Checkbox extends Component {
           });
         }
       }
+    }
 
+    else if (typeof this.props.onClick === 'function') {
+      this.props.onClick(false, id);
     }
   };
 

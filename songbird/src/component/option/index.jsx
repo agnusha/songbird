@@ -8,7 +8,8 @@ import "./styles.scss";
 class Option extends Component {
   static propTypes = {
     items: PropTypes.array,
-    currentRightItemNumber: PropTypes.number
+    currentRightItemNumber: PropTypes.number,
+    onClick: PropTypes.func
   };
 
   constructor(props) {
@@ -25,11 +26,8 @@ class Option extends Component {
 
   };
 
-  _changeTries = (wrongAndshouldAddTries, selectedBirdNumber) => {
+  _changeTries = (wrongAndshouldAddTries, selectedBirdId) => {
     console.log("-----------------");
-    console.log("try before in _changeTries");
-    console.log(this.state.try);
-
     console.log("guessed before in _changeTries");
     console.log(this.state.guessed);
 
@@ -40,17 +38,12 @@ class Option extends Component {
     console.log("guessed after in _changeTries");
     console.log(guessed);
 
-
     if (wrongAndshouldAddTries) {
       const currentTyCount = this.state.try + 1;
       this.setState({ try: currentTyCount })
     }
-    // console.log("try after in _changeTries");
-    // console.log(this.state.try);
-    // console.log("selectedBirdNumber in _changeTries");
-    // console.log(selectedBirdNumber);
-    // console.log("-----------------");
 
+    this.props.onClick(--selectedBirdId);
     return guessedBefore;
 
   };
