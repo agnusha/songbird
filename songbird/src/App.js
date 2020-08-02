@@ -42,6 +42,7 @@ class App extends Component {
   render() {
     const category = 0;
     const score = 0;
+    const { currentRightItemNumber, currentSelectedItemNumber } = this.state;
 
 
     // const sixWorkingItems = shuffleArray(birdsData[category]);
@@ -49,15 +50,15 @@ class App extends Component {
 
     console.log("state");
     console.log(this.state);
-
     console.log(sixWorkingItems);
+
     return (
       <div className="songbird-app">
         <Header category={category}></Header>
         <Container fluid className="container-content my-5">
           <Row className="mb-5">
             <Question
-              bird={sixWorkingItems[this.state.currentRightItemNumber]}
+              bird={sixWorkingItems[currentRightItemNumber]}
               guessed={false}
             ></Question>
           </Row>
@@ -65,13 +66,13 @@ class App extends Component {
             <Col md={5} className="p-0 mr-4">
               <Option
                 items={sixWorkingItems}
-                currentRightItemNumber={this.state.currentRightItemNumber}
-                onClick={this._changeSelectedBird}
-              ></Option>
+                currentRightItemNumber={currentRightItemNumber}
+                onClick={this._changeSelectedBird}>
+              </Option>
             </Col>
             <Col md={6} className="p-0 ml-4">
               <Description
-                bird={this.state.currentSelectedItemNumber ? sixWorkingItems[this.state.currentSelectedItemNumber] : null}
+                bird={currentSelectedItemNumber !== null ? sixWorkingItems[currentSelectedItemNumber] : null}
               ></Description>
             </Col>
           </Row>
@@ -81,8 +82,7 @@ class App extends Component {
               variant="success"
               size="lg"
               block
-              onClick={this.changeLevel}
-            >
+              onClick={this.changeLevel}>
               Next level
             </Button>
           </Row>

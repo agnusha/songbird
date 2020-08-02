@@ -72,15 +72,13 @@ class Checkbox extends Component {
         }
       }
     }
-
     else if (typeof this.props.onClick === 'function') {
       this.props.onClick(false, id);
     }
   };
 
   render() {
-    const { checked } = this.state;
-    const { disabled } = this.state;
+    const { checked, disabled } = this.state;
     return (
       <Row className="rounded-container__row" onClick={this._handleChange}>
         <div className="checkbox-container"  >
