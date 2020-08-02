@@ -15,6 +15,7 @@ class Option extends Component {
     super(props);
     this.state = {
       try: 0,
+      guessed: false,
     };
 
     console.log("-----------------");
@@ -24,13 +25,33 @@ class Option extends Component {
 
   };
 
-  _changeTries = () => {
-
-    this.setState({ try: this.state.try + 1 })
+  _changeTries = (wrongAndshouldAddTries, selectedBirdNumber) => {
     console.log("-----------------");
-    console.log("try in _changeTries");
+    console.log("try before in _changeTries");
     console.log(this.state.try);
-    console.log("-----------------");
+
+    console.log("guessed before in _changeTries");
+    console.log(this.state.guessed);
+
+    var guessedBefore = this.state.guessed;
+    var guessed = this.state.guessed ? true : !wrongAndshouldAddTries;
+    this.setState({ guessed: guessed });
+
+    console.log("guessed after in _changeTries");
+    console.log(guessed);
+
+
+    if (wrongAndshouldAddTries) {
+      const currentTyCount = this.state.try + 1;
+      this.setState({ try: currentTyCount })
+    }
+    // console.log("try after in _changeTries");
+    // console.log(this.state.try);
+    // console.log("selectedBirdNumber in _changeTries");
+    // console.log(selectedBirdNumber);
+    // console.log("-----------------");
+
+    return guessedBefore;
 
   };
 
