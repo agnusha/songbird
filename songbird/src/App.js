@@ -18,7 +18,7 @@ class App extends Component {
   static defaultProps = {
     currentRightItemNumber: Math.floor(Math.random() * 6),
     currentSelectedItemNumber: null,
-    score: 0,
+    guessed: false,
     level: 0,
     score: 0,
     score: 0,
@@ -30,19 +30,20 @@ class App extends Component {
     this.state = {
       currentRightItemNumber: props.currentRightItemNumber,
       currentSelectedItemNumber: props.currentSelectedItemNumber,
+      guessed: props.guessed,
     };
   }
 
-  _changeSelectedBird = (selectedBirdNumber) => {
+  _changeSelectedBird = (selectedBirdNumber, guessed) => {
     console.log("----------_changeSelectedBird -------");
     console.log(selectedBirdNumber);
-    this.setState({ currentSelectedItemNumber: selectedBirdNumber })
+    this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed });
   };
 
   render() {
     const category = 0;
     const score = 0;
-    const { currentRightItemNumber, currentSelectedItemNumber } = this.state;
+    const { currentRightItemNumber, currentSelectedItemNumber, guessed } = this.state;
 
 
     // const sixWorkingItems = shuffleArray(birdsData[category]);
@@ -59,7 +60,7 @@ class App extends Component {
           <Row className="mb-5">
             <Question
               bird={sixWorkingItems[currentRightItemNumber]}
-              guessed={false}
+              guessed={guessed}
             ></Question>
           </Row>
           <Row className="mb-5 justify-content-md-between">

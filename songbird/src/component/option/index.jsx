@@ -43,7 +43,7 @@ class Option extends Component {
       this.setState({ try: currentTyCount })
     }
 
-    this.props.onClick(--selectedBirdId);
+    this.props.onClick(--selectedBirdId, guessed);
     return guessedBefore;
 
   };
