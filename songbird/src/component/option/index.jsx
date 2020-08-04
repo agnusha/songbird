@@ -19,19 +19,14 @@ class Option extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      try: 0,
+      wrongAnswerCount: 0,
       guessed: false,
     };
-
     this.audioRefCorrect = React.createRef();
     this.audioRefIncorrect = React.createRef();
   };
 
   _playAudio = (wrongAndshouldAddTries, guessed) => {
-    console.log("_playAudio");
-    console.log(guessed);
-    console.log(wrongAndshouldAddTries);
-
     if (!guessed) {
       if (wrongAndshouldAddTries) {
         this.audioRefIncorrect.current.play();
@@ -44,27 +39,22 @@ class Option extends Component {
 
   _setTries = (wrongAndshouldAddTries) => {
     if (wrongAndshouldAddTries) {
-      const currentTryCount = this.state.try + 1;
-      this.setState({ try: currentTryCount });
+      const currentWrongAnswerCount = this.state.wrongAnswerCount + 1;
+      this.setState({ wrongAnswerCount: currentWrongAnswerCount });
     }
   };
 
-  changeTries = (wrongAndshouldAddTries, selectedBirdId) => {
-    // console.log("-----------------");
-    // console.log("guessed before in _changeTries");
-    // console.log(this.state.guessed);
-    var guessedBefore = this.state.guessed;
-    var guessed = this.state.guessed ? true : !wrongAndshouldAddTries;
-    this.setState({ guessed: guessed });
-    // console.log("guessed after in _changeTries");
-    // console.log(guessed);
+  selectOption = (wrongAndshouldAddTries, selectedBirdId) => {
+
+    const guessedBefore = this.state.guessed;
+    const guessedNow = this.state.guessed ? true : !wrongAndshouldAddTries;
+    this.setState({ guessed: guessedNow });
 
     this._setTries(wrongAndshouldAddTries);
     this._playAudio(wrongAndshouldAddTries, guessedBefore);
 
-    this.props.onClick(--selectedBirdId, guessed);
+    this.props.onClick(--selectedBirdId, guessedNow, this.state.wrongAnswerCount);
     return guessedBefore;
-
   };
 
   render() {
@@ -78,7 +68,7 @@ class Option extends Component {
     return (
       <Container className="rounded-container option main-container">
         {items.map((item, i) =>
-          <Checkbox key={i} id={item.id} name={item.name} onClick={this.changeTries} currentRightItemNumber={currentRightItemNumber}></Checkbox>
+          <Checkbox key={i} id={item.id} name={item.name} onClick={this.selectOption} currentRightItemNumber={currentRightItemNumber}></Checkbox>
         )}
 
         <audio src={rightAnswer} ref={this.audioRefCorrect} />

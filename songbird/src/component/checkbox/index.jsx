@@ -28,43 +28,30 @@ class Checkbox extends Component {
     };
   };
 
+  _setGuessedBefore = (flag, id) => {
+    if (typeof this.props.onClick === 'function') {
+      return this.props.onClick(flag, id);
+    }
+    return false;
+  }
+
   _handleChange = () => {
     const { id, currentRightItemNumber } = this.props;
     let guessedBefore;
-    console.log("disabled");
-
-    console.log(this);
-    console.log(id);
-    console.log(currentRightItemNumber);
-    console.log(this.state.disabled);
-
-
     if (this.state.disabled === false) {
       // right
       if (id === (currentRightItemNumber + 1)) {
-
-        if (typeof this.props.onClick === 'function') {
-          guessedBefore = this.props.onClick(false, id);
-          console.log("rez");
-          console.log(guessedBefore);
-        }
-
+        guessedBefore = this._setGuessedBefore(false, id);
         if (!guessedBefore) {
           this.setState({
             checked: !this.state.checked,
             disabled: true,
           });
         }
-
       }
       // wrong
       else {
-        if (typeof this.props.onClick === 'function') {
-          guessedBefore = this.props.onClick(true, id);
-          console.log("rez");
-          console.log(guessedBefore);
-        }
-
+        guessedBefore = this._setGuessedBefore(true, id);
         if (!guessedBefore) {
           this.setState({
             disabled: !this.state.disabled,
@@ -72,9 +59,7 @@ class Checkbox extends Component {
         }
       }
     }
-    else if (typeof this.props.onClick === 'function') {
-      this.props.onClick(false, id);
-    }
+    else this._setGuessedBefore(false, id);
   };
 
   render() {
