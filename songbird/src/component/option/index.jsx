@@ -53,7 +53,7 @@ class Option extends Component {
     this._setTries(wrongAndshouldAddTries);
     this._playAudio(wrongAndshouldAddTries, guessedBefore);
 
-    this.props.onClick(--selectedBirdId, guessedNow, this.state.wrongAnswerCount);
+    this.props.onClick(--selectedBirdId, guessedNow !== guessedBefore, guessedNow, this.state.wrongAnswerCount);
     return guessedBefore;
   };
 

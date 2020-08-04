@@ -12,13 +12,8 @@ class Header extends Component {
     category: PropTypes.number,
     score: PropTypes.number,
   };
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     checked: props.checked,
-  //     disabled: props.disabled,
-  //   };
-  // };
+
+
   render() {
     const { category, score } = this.props;
     console.log("score");

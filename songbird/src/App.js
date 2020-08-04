@@ -35,8 +35,8 @@ class App extends Component {
     };
   }
 
-  _changeSelectedBird = (selectedBirdNumber, guessed, wrongAnswerCount) => {
-    const newScore = this.state.score + 5 - wrongAnswerCount;
+  _changeSelectedBird = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
+    const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
     this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
   };
 
