@@ -21,8 +21,8 @@ class Header extends Component {
   // };
   render() {
     const { category, score } = this.props;
-
-
+    console.log("score");
+    console.log(score);
 
     return (
       <header className="header" id="basic-header">

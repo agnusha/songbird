@@ -20,7 +20,6 @@ class App extends Component {
     currentSelectedItemNumber: null,
     guessed: false,
     score: 0,
-
     level: 0,
     score: 0,
     score: 0,
@@ -32,6 +31,7 @@ class App extends Component {
       currentRightItemNumber: props.currentRightItemNumber,
       currentSelectedItemNumber: props.currentSelectedItemNumber,
       guessed: props.guessed,
+      score: props.score,
     };
   }
 
