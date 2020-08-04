@@ -19,8 +19,9 @@ class App extends Component {
     currentRightItemNumber: Math.floor(Math.random() * 6),
     currentSelectedItemNumber: null,
     guessed: false,
-    level: 0,
     score: 0,
+
+    level: 0,
     score: 0,
     score: 0,
   };
@@ -42,8 +43,7 @@ class App extends Component {
 
   render() {
     const category = 0;
-    const score = 0;
-    const { currentRightItemNumber, currentSelectedItemNumber, guessed } = this.state;
+    const { currentRightItemNumber, currentSelectedItemNumber, guessed, score } = this.state;
 
 
     // const sixWorkingItems = shuffleArray(birdsData[category]);
@@ -55,7 +55,7 @@ class App extends Component {
 
     return (
       <div className="songbird-app">
-        <Header category={category}></Header>
+        <Header category={category} score={score}></Header>
         <Container fluid className="container-content my-5">
           <Row className="mb-5">
             <Question
