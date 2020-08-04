@@ -35,10 +35,9 @@ class App extends Component {
     };
   }
 
-  _changeSelectedBird = (selectedBirdNumber, guessed) => {
-    console.log("----------_changeSelectedBird -------");
-    console.log(selectedBirdNumber);
-    this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed });
+  _changeSelectedBird = (selectedBirdNumber, guessed, wrongAnswerCount) => {
+    const newScore = this.state.score + 5 - wrongAnswerCount;
+    this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
   };
 
   render() {
