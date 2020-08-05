@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Checkbox from "../checkbox/index";
+import Checkbox from "./checkbox/index";
 import PropTypes from 'prop-types';
 
 import rightAnswer from './assets/audio/correct.mp3';
