@@ -35,6 +35,13 @@ class App extends Component {
     };
   }
 
+  _changeCategory = (category) => {
+    console.log("_changeCategory");
+    console.log(category);
+
+    this.setState({ category });
+  };
+
   _changeSelectedBird = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
     const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
     this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
@@ -54,7 +61,11 @@ class App extends Component {
 
     return (
       <div className="songbird-app">
-        <Header category={category} score={score}></Header>
+        <Header
+          category={category}
+          score={score}
+          onClick={this._changeCategory}
+        ></Header>
         <Container fluid className="container-content my-5">
           <Row className="mb-5">
             <Question

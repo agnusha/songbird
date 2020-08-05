@@ -8,11 +8,20 @@ import "./styles.scss";
 import categories from "../../data/categories";
 
 class Header extends Component {
+
+
   static propTypes = {
     category: PropTypes.number,
     score: PropTypes.number,
+    onClick: PropTypes.func
   };
 
+  selectCategory = () => {
+    console.log("sadasdasdasdawsdsa");
+    console.log(this);
+
+    this.props.onClick(this.id);
+  };
 
   render() {
     const { category, score } = this.props;
@@ -32,8 +41,8 @@ class Header extends Component {
                   <li className={classNames({
                     'page-item': true,
                     'active': category === i,
-                  })} key={i} >
-                    <span className="page-link" id={item.id}>{item.name}</span>
+                  })} key={i} onClick={this.selectCategory} >
+                    <span className="page-link" id={item.id}>{item.name} </span>
                   </li>
                 )}
               </ul>

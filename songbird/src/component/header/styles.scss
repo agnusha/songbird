@@ -1,5 +1,6 @@
 $border: #dee2e6;
 $white: #fff;
+$active: #7cf7fc;
 $dark-green: green;
 
 .songbird-logo {
@@ -37,6 +38,9 @@ $dark-green: green;
           background-color: $dark-green;
           border-color: $border;
         }
+      }
+      &.active span {
+        background-color: $active;
       }
     }
   }
