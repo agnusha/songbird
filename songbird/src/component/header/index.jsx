@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import logo from "./assets/images/logo.jpg";
-import classNames from 'classnames';
+
+import Category from "./category/index";
 import { Badge, Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
 
@@ -38,12 +39,8 @@ class Header extends Component {
             <Col md="auto" className="margined-col mr-auto">
               <ul className="pagination">
                 {categories.map((item, i) =>
-                  <li className={classNames({
-                    'page-item': true,
-                    'active': category === i,
-                  })} key={i} onClick={this.selectCategory} >
-                    <span className="page-link" id={item.id}>{item.name} </span>
-                  </li>
+                  <Category key={i} item={item} active={category === i} onClick={this.selectCategory}>
+                  </Category>
                 )}
               </ul>
             </Col>
