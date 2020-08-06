@@ -1,68 +1,70 @@
 @import "./vars.scss";
-
+@import "./font/Raleway-Regular.ttf";
 body {
     color: white;
-}
-.songbird-app {
-    background: linear-gradient(150deg, #281483 15%, #8f6ed5 70%, #d782d9 94%);
+    .songbird-app {
+        font-family: "Raleway", sans-serif;
+        letter-spacing: 0.8px;
+        background: linear-gradient(150deg, #281483 15%, #8f6ed5 70%, #d782d9 94%);
 
-    .container-content {
-        padding: 0 10%;
-    }
-
-    .rhap_progress-indicator,
-    .rhap_volume-indicator {
-        background-color: $dark-blue;
-    }
-    .rhap_repeat-button,
-    .rhap_main-controls-button,
-    .rhap_button-clear,
-    .rhap_time {
-        color: $dark-blue;
-    }
-
-    .rounded-container {
-        background-color: $white;
-        color: $dark-blue;
-        padding: 20px 25px;
-        border: 3px dashed $border;
-        border-radius: 24px;
-        box-shadow: 0 0 8px #00000080;
-    }
-
-    .dashed-border {
-        border: 3px dashed $border;
-    }
-
-    .songbird-app__button {
-        text-transform: uppercase;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        border: 2px solid #06a763;
-        background-color: #06a763;
-        font-weight: 500;
-        letter-spacing: 0.3rem;
-
-        &:hover {
-            background: #ace7cf;
-            color: #06a763;
+        .container-content {
+            padding: 0 10%;
         }
-    }
 
-    .main-container {
-        height: 100%;
-    }
+        .rhap_progress-indicator,
+        .rhap_volume-indicator {
+            background-color: $dark-blue;
+        }
+        .rhap_repeat-button,
+        .rhap_main-controls-button,
+        .rhap_button-clear,
+        .rhap_time {
+            color: $dark-blue;
+        }
 
-    .rhap_container {
-        background: transparent;
-        box-shadow: none;
-    }
+        .rounded-container {
+            background-color: $white;
+            color: $dark-blue;
+            padding: 20px 25px;
+            border: 3px dashed $border;
+            border-radius: 24px;
+            box-shadow: 0 0 8px #00000080;
+        }
 
-    .bordered-img {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 5px;
-        &:hover {
-            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        .dashed-border {
+            border: 3px dashed $border;
+        }
+
+        .songbird-app__button {
+            text-transform: uppercase;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            border: 2px solid #06a763;
+            background-color: #06a763;
+            font-weight: 500;
+            letter-spacing: 0.3rem;
+
+            &:hover {
+                background: #ace7cf;
+                color: #06a763;
+            }
+        }
+
+        .main-container {
+            height: 100%;
+        }
+
+        .rhap_container {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .bordered-img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            &:hover {
+                box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+            }
         }
     }
 }
