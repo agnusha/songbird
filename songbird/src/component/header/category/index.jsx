@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import "./styles.scss";
 
 class Category extends Component {
@@ -9,13 +8,6 @@ class Category extends Component {
     item: PropTypes.object,
     active: PropTypes.bool,
     onClick: PropTypes.func,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentCategory: props.category,
-    };
   };
 
   clickCategory = () => {
@@ -27,15 +19,11 @@ class Category extends Component {
 
   render() {
     const { item, active } = this.props;
-    const { currentCategory } = this.state;
 
-
-    console.log("active");
-    console.log(active);
     return (
       <li id={item.id} className={classNames({
         'page-item': true,
-        'active': currentCategory === item.id,
+        'active': active,
       })}
         onClick={this.clickCategory} >
         <span className="page-link">{item.name} </span>

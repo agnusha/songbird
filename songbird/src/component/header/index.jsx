@@ -15,17 +15,24 @@ class Header extends Component {
     onClick: PropTypes.func
   };
 
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      category: props.category,
+    };
+  };
+
   sendCategoryToApp = (category) => {
+    this.setState({ category });
     if (typeof this.props.onClick === 'function') {
       return this.props.onClick(category);
     }
   };
 
   render() {
-    const { category, score } = this.props;
-    // console.log("score");
-    // console.log(score);
-
+    const { score } = this.props;
+    const { category } = this.state;
     return (
       <header className="header" id="basic-header">
         <Container fluid className="px-5 py-3">
