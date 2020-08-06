@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import logo from "./assets/images/logo.jpg";
-
 import Category from "./category/index";
 import { Badge, Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
