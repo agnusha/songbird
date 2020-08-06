@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import { Row } from "react-bootstrap";
 
-import "./styles.scss";
-
 class Checkbox extends Component {
-
   static propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,

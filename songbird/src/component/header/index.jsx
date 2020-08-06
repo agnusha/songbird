@@ -35,12 +35,12 @@ class Header extends Component {
     return (
       <header className="header" id="basic-header">
         <Container fluid className="px-5 py-2">
-          <Row>
+          <Row className="header-row">
             <Col md="auto" className="margined-col">
               <img src={logo} className="songbird-logo my-auto" alt="logo" />
             </Col>
             <Col md="auto" className="margined-col mr-auto">
-              <ul className="pagination">
+              <ul className="pagination my-auto">
                 {categories.map((item, i) =>
                   <Category key={i} item={item} active={category === i} onClick={this.sendCategoryToApp}>
                   </Category>

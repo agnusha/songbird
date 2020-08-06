@@ -12,7 +12,9 @@
 #basic-header {
   background: $white;
   background-color: $danger;
-  align-items: center;
+  .header-row{
+    align-items: center;
+  }
 
   ul.pagination {
     justify-content: space-between;

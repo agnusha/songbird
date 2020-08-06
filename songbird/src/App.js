@@ -66,7 +66,7 @@ class App extends Component {
           score={score}
           onClick={this._changeCategory}
         ></Header>
-        <Container fluid className="container-content my-4">
+        <Container fluid className="container-content mt-4">
           <Row className="mb-5">
             <Question
               bird={sixWorkingItems[currentRightItemNumber]}
@@ -90,7 +90,6 @@ class App extends Component {
           <Row>
             <Button
               className="songbird-app__button"
-              variant="success"
               size="lg"
               block
               onClick={this.changeLevel}>
