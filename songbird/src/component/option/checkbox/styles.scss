@@ -1,10 +1,4 @@
-$brand: #6af398;
-$checkboxSize: 1.5rem;
-$uncheckedBG: black;
-$checkedBG: $brand;
-$wrongBG: #fa1b1b;
-$checkedColor: black;
-$disabledBG: #00000059;
+@import "../../../vars.scss";
 
 .checkbox-container__input {
     display: none;

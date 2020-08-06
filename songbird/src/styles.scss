@@ -1,4 +1,4 @@
-$border: #dee2e6;
+@import "./vars.scss";
 
 body {
     color: white;
@@ -8,7 +8,6 @@ body {
     .container-content {
         padding: 0 10%;
     }
-
     .rounded-container {
         background-color: indigo;
         border-radius: 0.5em;

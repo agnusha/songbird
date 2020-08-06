@@ -1,7 +1,4 @@
-$border: #dee2e6;
-$white: #fff;
-$active: #7cf7fc;
-$dark-green: green;
+@import "../../vars.scss";
 
 .songbird-logo {
   width: 150px;
@@ -13,7 +10,7 @@ $dark-green: green;
 }
 
 #basic-header {
-  background: rgb(243, 239, 190);
+  background: $white;
   align-items: center;
 
   ul.pagination {
