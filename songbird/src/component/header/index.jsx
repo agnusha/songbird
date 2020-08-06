@@ -9,25 +9,22 @@ import "./styles.scss";
 import categories from "../../data/categories";
 
 class Header extends Component {
-
-
   static propTypes = {
     category: PropTypes.number,
     score: PropTypes.number,
     onClick: PropTypes.func
   };
 
-  selectCategory = () => {
-    console.log("sadasdasdasdawsdsa");
-    console.log(this);
-
-    this.props.onClick(this.id);
+  sendCategoryToApp = (category) => {
+    if (typeof this.props.onClick === 'function') {
+      return this.props.onClick(category);
+    }
   };
 
   render() {
     const { category, score } = this.props;
-    console.log("score");
-    console.log(score);
+    // console.log("score");
+    // console.log(score);
 
     return (
       <header className="header" id="basic-header">
@@ -39,7 +36,7 @@ class Header extends Component {
             <Col md="auto" className="margined-col mr-auto">
               <ul className="pagination">
                 {categories.map((item, i) =>
-                  <Category key={i} item={item} active={category === i} onClick={this.selectCategory}>
+                  <Category key={i} item={item} active={category === i} onClick={this.sendCategoryToApp}>
                   </Category>
                 )}
               </ul>

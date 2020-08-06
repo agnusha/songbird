@@ -36,9 +36,8 @@ class App extends Component {
   }
 
   _changeCategory = (category) => {
-    console.log("_changeCategory");
+    console.log("_changeCategory!!!!!!!!!!!!!!!!!!!!!!");
     console.log(category);
-
     this.setState({ category });
   };
 
