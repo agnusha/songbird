@@ -11,6 +11,7 @@
 
 #basic-header {
   background: $white;
+  background-color: $danger;
   align-items: center;
 
   ul.pagination {
@@ -25,20 +26,24 @@
       flex: auto;
       text-align: center;
       span {
-        cursor: auto;
-        color: $dark-green;
+        cursor: pointer;
+        color: $dark-blue;
         background-color: $white;
-        border: 1px solid $border;
+        border: none;
+        text-transform: uppercase;
 
         &:hover {
           color: $white;
-          background-color: $dark-green;
-          border-color: $border;
+          background-color: $dark-blue !important;
         }
       }
       &.active span {
-        background-color: $active;
+        background-color: $light-pink;
       }
     }
+  }
+
+  .header-score {
+    background-color: $dark-blue;
   }
 }

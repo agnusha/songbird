@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import logo from "./assets/images/logo.jpg";
+import logo from "./assets/images/logo.svg";
 import Category from "./category/index";
 import { Badge, Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
@@ -34,7 +34,7 @@ class Header extends Component {
     const { category } = this.state;
     return (
       <header className="header" id="basic-header">
-        <Container fluid className="px-5 py-3">
+        <Container fluid className="px-5 py-2">
           <Row>
             <Col md="auto" className="margined-col">
               <img src={logo} className="songbird-logo my-auto" alt="logo" />
@@ -50,7 +50,7 @@ class Header extends Component {
             <Col md="auto" className="margined-col">
               <div >
                 <h4>
-                  Score: <Badge variant="secondary" className="header-score ">{score}</Badge>
+                  Score: <Badge variant="secondary" className="header-score">{score}</Badge>
                 </h4>
               </div>
             </Col>

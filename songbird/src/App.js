@@ -10,6 +10,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import birdsData from "./data/birds";
 import { shuffleArray } from "./utils";
 
+
 class App extends Component {
   changeLevel = () => {
     console.log(this);
@@ -65,7 +66,7 @@ class App extends Component {
           score={score}
           onClick={this._changeCategory}
         ></Header>
-        <Container fluid className="container-content my-5">
+        <Container fluid className="container-content my-4">
           <Row className="mb-5">
             <Question
               bird={sixWorkingItems[currentRightItemNumber]}
