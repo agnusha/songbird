@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import logo from "./assets/images/logo.svg";
 import Category from "./category/index";
+
+
 import { Badge, Container, Row, Col } from "react-bootstrap";
 import "./styles.scss";
 
@@ -13,7 +15,6 @@ class Header extends Component {
     score: PropTypes.number,
     onClick: PropTypes.func
   };
-
 
   constructor(props) {
     super(props);

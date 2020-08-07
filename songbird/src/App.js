@@ -5,6 +5,7 @@ import Header from "./component/header/index";
 import Question from "./component/question/index";
 import Option from "./component/option/index";
 import Description from "./component/description/index";
+import ModalResult from "./component/modal/index";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
 import birdsData from "./data/birds";
@@ -21,7 +22,7 @@ class App extends Component {
     currentSelectedItemNumber: null,
     guessed: false,
     score: 0,
-    level: 0,
+    showModal: false,
     score: 0,
     score: 0,
   };
@@ -96,6 +97,8 @@ class App extends Component {
               Next level
             </Button>
           </Row>
+          <ModalResult></ModalResult>
+
         </Container>
       </div>
     );
