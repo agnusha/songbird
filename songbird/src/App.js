@@ -13,9 +13,6 @@ import { shuffleArray } from "./utils";
 
 
 class App extends Component {
-  changeLevel = () => {
-    console.log(this);
-  };
 
   static defaultProps = {
     currentRightItemNumber: Math.floor(Math.random() * 6),
@@ -34,23 +31,34 @@ class App extends Component {
       currentSelectedItemNumber: props.currentSelectedItemNumber,
       guessed: props.guessed,
       score: props.score,
+      showModal: props.showModal,
     };
   }
 
-  _changeCategory = (category) => {
+
+
+  changeModalVisibility = (showModal) => {
+    this.setState({ showModal });
+  };
+
+  changeLevel = () => {
+    this.changeModalVisibility(true);
+  };
+
+  changeCategory = (category) => {
     console.log("_changeCategory!!!!!!!!!!!!!!!!!!!!!!");
     console.log(category);
     this.setState({ category });
   };
 
-  _changeSelectedBird = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
+  changeSelectedBird = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
     const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
     this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
   };
 
   render() {
     const category = 0;
-    const { currentRightItemNumber, currentSelectedItemNumber, guessed, score } = this.state;
+    const { currentRightItemNumber, currentSelectedItemNumber, guessed, score, showModal } = this.state;
 
 
     // const sixWorkingItems = shuffleArray(birdsData[category]);
@@ -65,7 +73,7 @@ class App extends Component {
         <Header
           category={category}
           score={score}
-          onClick={this._changeCategory}
+          onClick={this.changeCategory}
         ></Header>
         <Container fluid className="container-content mt-4">
           <Row className="mb-5">
@@ -79,7 +87,7 @@ class App extends Component {
               <Option
                 items={sixWorkingItems}
                 currentRightItemNumber={currentRightItemNumber}
-                onClick={this._changeSelectedBird}>
+                onClick={this.changeSelectedBird}>
               </Option>
             </Col>
             <Col sm={6} className="p-0 mb-5">
@@ -94,11 +102,10 @@ class App extends Component {
               size="lg"
               block
               onClick={this.changeLevel}>
-              Next level
+              Далее
             </Button>
           </Row>
-          <ModalResult></ModalResult>
-
+          <ModalResult result={3} showModal={showModal} onClick={this.changeModalVisibility}></ModalResult>
         </Container>
       </div>
     );
