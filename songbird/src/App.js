@@ -73,15 +73,15 @@ class App extends Component {
               guessed={guessed}
             ></Question>
           </Row>
-          <Row className="mb-5 justify-content-between">
-            <Col sm={5} className="p-0">
+          <Row className="justify-content-between">
+            <Col sm={5} className="p-0 mb-5">
               <Option
                 items={sixWorkingItems}
                 currentRightItemNumber={currentRightItemNumber}
                 onClick={this._changeSelectedBird}>
               </Option>
             </Col>
-            <Col sm={6} className="p-0">
+            <Col sm={6} className="p-0 mb-5">
               <Description
                 bird={currentSelectedItemNumber !== null ? sixWorkingItems[currentSelectedItemNumber] : null}
               ></Description>
