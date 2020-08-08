@@ -18,10 +18,10 @@ class App extends Component {
     currentRightItemNumber: Math.floor(Math.random() * 6),
     currentSelectedItemNumber: null,
     guessed: false,
+    guessedNumbers: [],
     score: 0,
     showModal: false,
-    score: 0,
-    score: 0,
+    category: 0,
   };
 
   constructor(props) {
@@ -32,37 +32,42 @@ class App extends Component {
       guessed: props.guessed,
       score: props.score,
       showModal: props.showModal,
+      category: props.category,
     };
   }
-
-
 
   changeModalVisibility = (showModal) => {
     this.setState({ showModal });
   };
 
-  changeLevel = () => {
-    this.changeModalVisibility(true);
+  nextQuestion = () => {
+    this.setState((state) => {
+      return { currentRightItemNumber: state.currentRightItemNumber + 1 };
+    });
   };
 
   changeCategory = (category) => {
-    console.log("_changeCategory!!!!!!!!!!!!!!!!!!!!!!");
-    console.log(category);
-    this.setState({ category });
+    this.setState({ currentSelectedItemNumber: null, guessed: false, score: 0, category });
   };
 
   changeSelectedBird = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
     const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
     this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
+    if (guessed) {
+      this.props.guessedNumbers.push(selectedBirdNumber);
+    }
   };
 
   render() {
-    const category = 0;
-    const { currentRightItemNumber, currentSelectedItemNumber, guessed, score, showModal } = this.state;
+    const { currentRightItemNumber, currentSelectedItemNumber, guessed, score, showModal, category } = this.state;
 
-
-    // const sixWorkingItems = shuffleArray(birdsData[category]);
     const sixWorkingItems = birdsData[category];
+    console.log("12222222222222222222222222222");
+
+    console.log(sixWorkingItems);
+
+    // const sixWorkingItems = birdsData[category];
+    const maxResult = sixWorkingItems.length * 5;
 
     console.log("state");
     console.log(this.state);
@@ -96,16 +101,18 @@ class App extends Component {
               ></Description>
             </Col>
           </Row>
-          <Row>
-            <Button
-              className="songbird-app__button"
-              size="lg"
-              block
-              onClick={this.changeLevel}>
-              Далее
+          {guessed
+            && <Row>
+              <Button
+                className="songbird-app__button"
+                size="lg"
+                block
+                onClick={this.changeLevel}>
+                Далее
             </Button>
-          </Row>
-          <ModalResult result={3} showModal={showModal} onClick={this.changeModalVisibility}></ModalResult>
+            </Row>
+          }
+          <ModalResult score={score} maxResult={maxResult} showModal={showModal} onClick={this.nextQuestion}></ModalResult>
         </Container>
       </div>
     );

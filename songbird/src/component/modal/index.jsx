@@ -8,26 +8,22 @@ import "./styles.scss";
 
 class ModalResult extends Component {
   static propTypes = {
-    result: PropTypes.number,
+    score: PropTypes.number,
     maxResult: PropTypes.number,
     showModal: PropTypes.bool,
     onClick: PropTypes.func,
   };
 
   handleClose = () => {
-    if (typeof this.props.onClick === 'function') {
-      return this.props.onClick(false);
-    }
+    return this.props.onClick(false);
   }
   handleShow = () => {
-    if (typeof this.props.onClick === 'function') {
-      return this.props.onClick(true);
-    }
+    return this.props.onClick(true);
   }
 
   render() {
     const {
-      result, maxResult, showModal
+      score, maxResult, showModal
     } = this.props;
 
     return (
@@ -36,7 +32,7 @@ class ModalResult extends Component {
           <Modal.Title>Результат</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Вы набрали {result} баллов из {maxResult} возможных.</Modal.Body>
+          Вы набрали {score} баллов из {maxResult} возможных.</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={this.handleClose}>
             Пройти еще раз

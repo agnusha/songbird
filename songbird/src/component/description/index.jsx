@@ -20,7 +20,7 @@ class Description extends Component {
     } = this.props;
 
     return (
-      <div>
+      <>
         {bird === null
           ? < Container className="rounded-container description main-container">
             <Row className="mb-2">
@@ -53,7 +53,7 @@ class Description extends Component {
             </Row>
           </Container>
         }
-      </div >
+      </ >
 
 
 
