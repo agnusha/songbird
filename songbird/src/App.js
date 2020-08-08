@@ -22,6 +22,7 @@ class App extends Component {
     score: 0,
     showModal: false,
     category: 0,
+    currentQuestion: 0,
   };
 
   constructor(props) {
@@ -34,7 +35,7 @@ class App extends Component {
       showModal: props.showModal,
       category: props.category,
     };
-  }
+  };
 
   changeModalVisibility = (showModal) => {
     this.setState({ showModal });
@@ -44,6 +45,7 @@ class App extends Component {
     this.setState((state) => {
       return { currentRightItemNumber: state.currentRightItemNumber + 1 };
     });
+    this.changeModalVisibility(true);
   };
 
   changeCategory = (category) => {
