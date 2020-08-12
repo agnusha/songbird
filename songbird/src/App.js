@@ -34,6 +34,7 @@ class App extends Component {
       score: props.score,
       showModal: props.showModal,
       category: props.category,
+      guessedNumbers: props.guessedNumbers,
     };
   };
 
@@ -42,9 +43,17 @@ class App extends Component {
   };
 
   nextQuestion = () => {
+    var nextQuestion;
+    do {
+      nextQuestion = Math.floor(Math.random() * 6);
+      console.log(nextQuestion);
+    }
+    while (this.state.guessedNumbers.includes(nextQuestion));
+
     this.setState((state) => {
-      return { currentRightItemNumber: state.currentRightItemNumber + 1 };
+      return { currentRightItemNumber: nextQuestion };
     });
+
     this.changeModalVisibility(true);
   };
 
@@ -62,19 +71,13 @@ class App extends Component {
 
   render() {
     const { currentRightItemNumber, currentSelectedItemNumber, guessed, score, showModal, category } = this.state;
-
     const sixWorkingItems = birdsData[category];
-    console.log("12222222222222222222222222222");
-
-    console.log(sixWorkingItems);
-
-    // const sixWorkingItems = birdsData[category];
     const maxResult = sixWorkingItems.length * 5;
 
     console.log("state");
     console.log(this.state);
+    console.log("1222222222222 sixWorkingItems 2222222222222222");
     console.log(sixWorkingItems);
-
     return (
       <div className="songbird-app">
         <Header
@@ -114,7 +117,7 @@ class App extends Component {
             </Button>
             </Row>
           }
-          <ModalResult score={score} maxResult={maxResult} showModal={showModal} onClick={this.nextQuestion}></ModalResult>
+          <ModalResult score={score} maxResult={sixWorkingItems.length * 5} showModal={showModal} onClick={this.nextQuestion}></ModalResult>
         </Container>
       </div>
     );
