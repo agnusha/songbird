@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import PropTypes from 'prop-types';
 
-
 import { Button, Modal } from "react-bootstrap";
 import "./styles.scss";
 
@@ -13,6 +12,7 @@ class ModalResult extends Component {
     showModal: PropTypes.bool,
     onClick: PropTypes.func,
   };
+
 
   handleClose = () => {
     return this.props.onClick(false);

@@ -43,18 +43,18 @@ class App extends Component {
   };
 
   nextQuestion = () => {
-    var nextQuestion;
+    let nextQuestion;
     do {
       nextQuestion = Math.floor(Math.random() * 6);
+      console.log("nextQuestion");
       console.log(nextQuestion);
     }
     while (this.state.guessedNumbers.includes(nextQuestion));
 
-    this.setState((state) => {
-      return { currentRightItemNumber: nextQuestion };
-    });
+    console.log("find nextQuestion");
+    console.log(nextQuestion);
 
-    this.changeModalVisibility(true);
+    this.setState({ currentRightItemNumber: nextQuestion, showModal: true });
   };
 
   changeCategory = (category) => {
@@ -64,19 +64,20 @@ class App extends Component {
   changeSelectedBird = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
     const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
     this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
-    if (guessed) {
-      this.props.guessedNumbers.push(selectedBirdNumber);
+    if (guessed && changeGuessed) {
+      this.setState((state) => {
+        return { guessedNumbers: [...state.guessedNumbers, selectedBirdNumber] };
+      });
     }
   };
 
   render() {
     const { currentRightItemNumber, currentSelectedItemNumber, guessed, score, showModal, category } = this.state;
     const sixWorkingItems = birdsData[category];
-    const maxResult = sixWorkingItems.length * 5;
 
     console.log("state");
     console.log(this.state);
-    console.log("1222222222222 sixWorkingItems 2222222222222222");
+    console.log("------------ sixWorkingItems -----------");
     console.log(sixWorkingItems);
     return (
       <div className="songbird-app">
@@ -112,12 +113,12 @@ class App extends Component {
                 className="songbird-app__button"
                 size="lg"
                 block
-                onClick={this.changeLevel}>
+                onClick={this.nextQuestion}>
                 Далее
             </Button>
             </Row>
           }
-          <ModalResult score={score} maxResult={sixWorkingItems.length * 5} showModal={showModal} onClick={this.nextQuestion}></ModalResult>
+          <ModalResult score={score} maxResult={sixWorkingItems.length * 5} showModal={showModal} onClick={this.changeModalVisibility}></ModalResult>
         </Container>
       </div>
     );
