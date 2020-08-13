@@ -17,14 +17,9 @@ class ModalResult extends Component {
   handleClose = () => {
     return this.props.onClick(false);
   }
-  handleShow = () => {
-    return this.props.onClick(true);
-  }
 
   render() {
-    const {
-      score, maxResult, showModal
-    } = this.props;
+    const { score, maxResult, showModal } = this.props;
 
     return (
       <Modal show={showModal} onHide={this.handleClose}>
