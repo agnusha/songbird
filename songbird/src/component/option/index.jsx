@@ -62,13 +62,11 @@ class Option extends Component {
       items, currentRightItemNumber
     } = this.props;
 
-    console.log("currentRightItemNumber");
-    console.log(currentRightItemNumber);
-
     return (
       <Container className="rounded-container option main-container">
         {items.map((item, i) =>
-          <Checkbox key={i} id={item.id} name={item.name} onClick={this.selectOption} currentRightItemNumber={currentRightItemNumber}></Checkbox>
+          <Checkbox key={i} id={item.id} name={item.name}
+            onClick={this.selectOption} currentRightItemNumber={currentRightItemNumber}></Checkbox>
         )}
 
         <audio src={rightAnswer} ref={this.audioRefCorrect} />

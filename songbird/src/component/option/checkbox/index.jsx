@@ -18,18 +18,20 @@ class Checkbox extends Component {
   };
 
   constructor(props) {
+
+    console.log("constructor constructor constructor");
+    console.log(props);
+
+
     super(props);
     this.state = {
-      checked: props.checked,
-      disabled: props.disabled,
+      checked: false,
+      disabled: false,
     };
   };
 
   _setGuessedBefore = (flag, id) => {
-    if (typeof this.props.onClick === 'function') {
-      return this.props.onClick(flag, id);
-    }
-    return false;
+    return this.props.onClick(flag, id);
   }
 
   _handleChange = () => {
