@@ -31,8 +31,20 @@ class ModalResult extends Component {
         <Modal.Header closeButton>
           <Modal.Title>Результат</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          Вы набрали {score} баллов из {maxResult} возможных.</Modal.Body>
+        {(score === maxResult)
+          ?
+          <Modal.Body>
+            <div>
+              Вы набрали максимум баллов ({score}).
+            </div>
+
+            <img className="best-result_img"></img>
+
+          </Modal.Body>
+          : <Modal.Body>
+            Вы набрали {score} баллов из {maxResult} возможных.
+      </Modal.Body>
+        }
         <Modal.Footer>
           <Button variant="secondary" onClick={this.handleClose}>
             Пройти еще раз
