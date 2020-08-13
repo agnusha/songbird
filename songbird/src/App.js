@@ -43,6 +43,8 @@ class App extends Component {
   };
 
   nextQuestion = () => {
+    // if (this.state.guessed)
+
     let nextQuestion;
     do {
       nextQuestion = Math.floor(Math.random() * 6);
@@ -50,7 +52,6 @@ class App extends Component {
       console.log(nextQuestion);
     }
     while (this.state.guessedNumbers.includes(nextQuestion));
-
     console.log("find nextQuestion");
     console.log(nextQuestion);
 
@@ -118,7 +119,8 @@ class App extends Component {
             </Button>
             </Row>
           }
-          <ModalResult score={score} maxResult={sixWorkingItems.length * 5} showModal={showModal} onClick={this.changeModalVisibility}></ModalResult>
+          <ModalResult score={score} maxResult={sixWorkingItems.length * 5}
+            showModal={showModal} onClick={this.changeModalVisibility}></ModalResult>
         </Container>
       </div>
     );
