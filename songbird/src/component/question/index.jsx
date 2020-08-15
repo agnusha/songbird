@@ -29,7 +29,7 @@ class Question extends Component {
           </Col>
           <Col>
             <h4>{guessed ? bird.name : "*******"}</h4>
-            <AudioPlayer src={bird.audio} />
+            <AudioPlayer autoPlayAfterSrcChange={false} src={bird.audio} />
           </Col>
         </Row>
       </Container>

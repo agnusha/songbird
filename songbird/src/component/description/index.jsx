@@ -39,7 +39,7 @@ class Description extends Component {
                 <h4>{bird.name}</h4>
                 <h5>{bird.species} </h5>
                 <AudioPlayer
-                  autoPlay={false}
+                  autoPlayAfterSrcChange={false}
                   src={bird.audio}
                 />
               </Col>
