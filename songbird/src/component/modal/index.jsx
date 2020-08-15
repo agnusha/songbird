@@ -23,52 +23,42 @@ class ModalResult extends Component {
     const { score, maxResult, showModal } = this.props;
 
     return (
-      <>
-        <div className="container">
-          <div className="interior">
-            <a className="btn" href="#open-modal">Open Modal</a>
-          </div>
-        </div>
-        <div id="open-modal" className={classNames({
-          'modal-window': true,
-          'show': true,
-        })}>
-          <div>
-            <a href="#" title="Close" className="modal-close">Close</a>
+      <div id="resultModal" className={classNames({
+        'modal-result': true,
+        'show': showModal,
+      })}>
+
+        <div className="modal-result__modal-content">
+          <div className="modal-header">
             <h3>Результат</h3>
+            <button type="button" className="close" onClick={this.handleClose}>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
-            <div class="modal-header">
-              <h3>Результат</h3>
-              <button type="button" class="close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-              {(score === maxResult)
-                ? <div>
-                  <div>
-                    Вы набрали максимум баллов ({score}).
+          <div className="modal-body">
+            {(score === maxResult)
+              ? <div>
+                <div>
+                  Вы набрали максимум баллов ({score}).
                   </div>
-                  <img className="best-result_img"></img>
-                </div>
-                : <p>
-                  Вы набрали {score} баллов из {maxResult} возможных.
-                  </p>
-              }
-            </div>
-            <div className="modal-footer">
-              <Button variant="secondary" onClick={this.handleClose}>
-                Пройти еще раз
+                <img className="best-result_img"></img>
+              </div>
+              : <p>
+                Вы набрали {score} баллов из {maxResult} возможных.
+               </p>
+            }
+          </div>
+          <div className="modal-footer">
+            <Button variant="secondary" onClick={this.handleClose}>
+              Пройти еще раз
             </Button>
-              <Button variant="primary" onClick={this.handleClose}>
-                Ок
+            <Button variant="primary" onClick={this.handleClose}>
+              Ок
             </Button>
-            </div>
           </div>
         </div>
-      </>
-
+      </div>
     );
   }
 }

@@ -48,8 +48,6 @@ class App extends Component {
     let nextQuestion;
     do {
       nextQuestion = Math.floor(Math.random() * 6);
-      console.log("nextQuestion");
-      console.log(nextQuestion);
     }
     while (this.state.guessedNumbers.includes(nextQuestion));
     console.log("find nextQuestion");
