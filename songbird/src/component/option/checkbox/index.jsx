@@ -7,28 +7,30 @@ class Checkbox extends Component {
     id: PropTypes.number,
     name: PropTypes.string,
     currentRightItemNumber: PropTypes.number,
-    checked: PropTypes.bool,
-    disabled: PropTypes.bool,
+    name: PropTypes.string,
     onClick: PropTypes.func,
   };
 
-  static defaultProps = {
-    checked: false,
-    disabled: false,
-  };
-
   constructor(props) {
-
-    console.log("constructor constructor constructor");
-    console.log(props);
-
-
     super(props);
     this.state = {
+      name: props.name,
       checked: false,
       disabled: false,
     };
   };
+
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.name !== prevState.name) {
+      return {
+        name: nextProps.name,
+        checked: false,
+        disabled: false,
+      };
+    }
+    return null;
+  }
 
   _setGuessedBefore = (flag, id) => {
     return this.props.onClick(flag, id);
