@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./styles.scss";
 
 class ModalResult extends Component {
@@ -42,7 +42,7 @@ class ModalResult extends Component {
                 <div>
                   Вы набрали максимум баллов ({score}).
                   </div>
-                <img className="best-result_img"></img>
+                <img className="best-result_img" alt="best result"></img>
               </div>
               : <p>
                 Вы набрали {score} баллов из {maxResult} возможных.
