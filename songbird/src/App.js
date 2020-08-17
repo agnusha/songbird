@@ -9,7 +9,6 @@ import ModalResult from "./component/modal/index";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
 import birdsData from "./data/birds";
-import { shuffleArray } from "./utils";
 
 
 class App extends Component {
@@ -22,7 +21,6 @@ class App extends Component {
     score: 0,
     showModal: false,
     category: 0,
-    currentQuestion: 0,
   };
 
   constructor(props) {
@@ -38,13 +36,13 @@ class App extends Component {
     };
   };
 
-  changeModalVisibility = (showModal) => {
-    this.setState({ showModal });
+
+  categoryClick = (category) => {
+    this.setState({ currentSelectedItemNumber: null, guessed: false, score: 0, category });
   };
 
-  nextQuestion = () => {
-    // if (this.state.guessed)
 
+  nextQuestionClick = () => {
     let nextQuestion;
     do {
       nextQuestion = Math.floor(Math.random() * 6);
@@ -56,11 +54,8 @@ class App extends Component {
     this.setState({ currentRightItemNumber: nextQuestion, showModal: true });
   };
 
-  changeCategory = (category) => {
-    this.setState({ currentSelectedItemNumber: null, guessed: false, score: 0, category });
-  };
 
-  changeSelectedBird = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
+  optionClick = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
     const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
     this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
     if (guessed && changeGuessed) {
@@ -70,20 +65,25 @@ class App extends Component {
     }
   };
 
+  modalButtonClick = (showModal) => {
+    this.setState({ showModal });
+  };
+
   render() {
-    const { currentRightItemNumber, currentSelectedItemNumber, guessed, score, showModal, category } = this.state;
+    const { currentRightItemNumber, currentSelectedItemNumber, guessed, guessedNumbers, score, showModal, category } = this.state;
     const sixWorkingItems = birdsData[category];
 
     console.log("state");
     console.log(this.state);
     console.log("------------ sixWorkingItems -----------");
     console.log(sixWorkingItems);
+
     return (
       <div className="songbird-app">
         <Header
           category={category}
           score={score}
-          onClick={this.changeCategory}
+          onClick={this.categoryClick}
         ></Header>
         <Container fluid className="container-content mt-4">
           <Row className="mb-5">
@@ -97,7 +97,7 @@ class App extends Component {
               <Option
                 items={sixWorkingItems}
                 currentRightItemNumber={currentRightItemNumber}
-                onClick={this.changeSelectedBird}>
+                onClick={this.optionClick}>
               </Option>
             </Col>
             <Col sm={6} className="p-0 mb-5">
@@ -112,13 +112,13 @@ class App extends Component {
                 className="songbird-app__button"
                 size="lg"
                 block
-                onClick={this.nextQuestion}>
+                onClick={this.nextQuestionClick}>
                 Далее
             </Button>
             </Row>
           }
           <ModalResult score={score} maxResult={sixWorkingItems.length * 5}
-            showModal={showModal} onClick={this.changeModalVisibility}></ModalResult>
+            showModal={showModal} onClick={this.modalButtonClick}></ModalResult>
         </Container>
       </div>
     );
