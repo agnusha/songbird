@@ -1,5 +1,10 @@
 @import "/../../vars.scss";
 
+.rounded-container__row{
+    cursor: pointer;
+
+
+
 .checkbox-container__label{
     margin-bottom: 0px;
 }
@@ -12,7 +17,7 @@
     + span {
         display: flex;
         position: relative;
-        transform: translate(0, -15%);
+        transform: translate(0, -20%);
         width: $checkboxSize;
         height: $checkboxSize;
         background: $uncheckedBG;
@@ -49,4 +54,5 @@
             background: $wrongBG;
         }
     }
+}
 }
