@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Row } from "react-bootstrap";
+import { Row } from 'react-bootstrap';
 
 class Checkbox extends Component {
   static propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     currentRightItemNumber: PropTypes.number,
-    name: PropTypes.string,
     onClick: PropTypes.func,
   };
 
@@ -18,13 +17,13 @@ class Checkbox extends Component {
       checked: false,
       disabled: false,
     };
-  };
-
+  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.name !== prevState.name) {
+    if (nextProps.name !== prevState.name || nextProps.currentRightItemNumber !== prevState.currentRightItemNumber) {
       return {
         name: nextProps.name,
+        currentRightItemNumber: nextProps.currentRightItemNumber,
         checked: false,
         disabled: false,
       };
@@ -32,9 +31,7 @@ class Checkbox extends Component {
     return null;
   }
 
-  _setGuessedBefore = (flag, id) => {
-    return this.props.onClick(flag, id);
-  }
+  _setGuessedBefore = (flag, id) => this.props.onClick(flag, id)
 
   _handleChange = () => {
     const { id, currentRightItemNumber } = this.props;
@@ -59,22 +56,21 @@ class Checkbox extends Component {
           });
         }
       }
-    }
-    else this._setGuessedBefore(false, id);
+    } else this._setGuessedBefore(false, id);
   };
 
   render() {
     const { checked, disabled } = this.state;
     return (
       <Row className="rounded-container__row" onClick={this._handleChange}>
-        <div className="checkbox-container"  >
+        <div className="checkbox-container" >
           <label className='checkbox-container__label'>
             <input
               type="checkbox"
               className="checkbox-container__input"
               disabled={disabled}
               checked={checked}
-              onChange={(e) => { }}
+              onChange={() => { }}
             />
             <span
               className="checkbox-container__span"
