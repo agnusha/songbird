@@ -16,7 +16,7 @@ class App extends Component {
   static defaultProps = {
     currentRightItemNumber: Math.floor(Math.random() * 6),
     currentSelectedItemNumber: null,
-    guessed: false,
+    isCurrentBirdGuessed: false,
     guessedNumbers: [],
     score: 0,
     showModal: false,
@@ -28,17 +28,17 @@ class App extends Component {
     this.state = {
       currentRightItemNumber: props.currentRightItemNumber,
       currentSelectedItemNumber: props.currentSelectedItemNumber,
-      guessed: props.guessed,
+      isCurrentBirdGuessed: props.isCurrentBirdGuessed,
+      guessedNumbers: props.guessedNumbers,
       score: props.score,
       showModal: props.showModal,
       category: props.category,
-      guessedNumbers: props.guessedNumbers,
     };
   }
 
   categoryClick = (category) => {
     this.setState({
-      currentSelectedItemNumber: null, guessed: false, score: 0, category,
+      currentSelectedItemNumber: null, isCurrentBirdGuessed: false, score: 0, category,
     });
   };
 
@@ -56,7 +56,7 @@ class App extends Component {
 
   optionClick = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
     const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
-    this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
+    this.setState({ currentSelectedItemNumber: selectedBirdNumber, isCurrentBirdGuessed: guessed, score: newScore });
     if (guessed && changeGuessed) {
       this.setState((state) => ({ guessedNumbers: [...state.guessedNumbers, selectedBirdNumber] }));
     }
@@ -68,7 +68,7 @@ class App extends Component {
 
   render() {
     const {
-      currentRightItemNumber, currentSelectedItemNumber, guessed, score, showModal, category,
+      currentRightItemNumber, currentSelectedItemNumber, isCurrentBirdGuessed, score, showModal, category,
     } = this.state;
     const sixWorkingItems = birdsData[category];
 
@@ -88,7 +88,7 @@ class App extends Component {
           <Row className="mb-5">
             <Question
               bird={sixWorkingItems[currentRightItemNumber]}
-              guessed={guessed}
+              guessed={isCurrentBirdGuessed}
             ></Question>
           </Row>
           <Row className="justify-content-between">
@@ -110,7 +110,7 @@ class App extends Component {
               className="songbird-app__button"
               size="lg"
               block
-              disabled={!guessed}
+              disabled={!isCurrentBirdGuessed}
               onClick={this.nextQuestionClick}>
               Далее
             </Button>
