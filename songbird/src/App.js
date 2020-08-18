@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./component/header/index";
-import Question from "./component/question/index";
-import Option from "./component/option/index";
-import Description from "./component/description/index";
-import ModalResult from "./component/modal/index";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  Container, Row, Col, Button,
+} from 'react-bootstrap';
+import Header from './component/header/index';
+import Question from './component/question/index';
+import Option from './component/option/index';
+import Description from './component/description/index';
+import ModalResult from './component/modal/index';
 
-import { Container, Row, Col, Button } from "react-bootstrap";
-import birdsData from "./data/birds";
-
+import birdsData from './data/birds';
 
 class App extends Component {
-
   static defaultProps = {
     currentRightItemNumber: Math.floor(Math.random() * 6),
     currentSelectedItemNumber: null,
@@ -34,13 +34,13 @@ class App extends Component {
       category: props.category,
       guessedNumbers: props.guessedNumbers,
     };
-  };
-
+  }
 
   categoryClick = (category) => {
-    this.setState({ currentSelectedItemNumber: null, guessed: false, score: 0, category });
+    this.setState({
+      currentSelectedItemNumber: null, guessed: false, score: 0, category,
+    });
   };
-
 
   nextQuestionClick = () => {
     let nextQuestion;
@@ -48,20 +48,17 @@ class App extends Component {
       nextQuestion = Math.floor(Math.random() * 6);
     }
     while (this.state.guessedNumbers.includes(nextQuestion));
-    console.log("find nextQuestion");
+    console.log('find nextQuestion');
     console.log(nextQuestion);
 
     this.setState({ currentRightItemNumber: nextQuestion, showModal: true });
   };
 
-
   optionClick = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
     const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
     this.setState({ currentSelectedItemNumber: selectedBirdNumber, guessed, score: newScore });
     if (guessed && changeGuessed) {
-      this.setState((state) => {
-        return { guessedNumbers: [...state.guessedNumbers, selectedBirdNumber] };
-      });
+      this.setState((state) => ({ guessedNumbers: [...state.guessedNumbers, selectedBirdNumber] }));
     }
   };
 
@@ -70,12 +67,14 @@ class App extends Component {
   };
 
   render() {
-    const { currentRightItemNumber, currentSelectedItemNumber, guessed, guessedNumbers, score, showModal, category } = this.state;
+    const {
+      currentRightItemNumber, currentSelectedItemNumber, guessed, guessedNumbers, score, showModal, category,
+    } = this.state;
     const sixWorkingItems = birdsData[category];
 
-    console.log("state");
+    console.log('state');
     console.log(this.state);
-    console.log("------------ sixWorkingItems -----------");
+    console.log('------------ sixWorkingItems -----------');
     console.log(sixWorkingItems);
 
     return (
