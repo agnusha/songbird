@@ -1,3 +1,4 @@
+/* eslint-disable brace-style */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row } from 'react-bootstrap';
@@ -14,6 +15,7 @@ class Checkbox extends Component {
     super(props);
     this.state = {
       name: props.name,
+      currentRightItemNumber: props.currentRightItemNumber,
       checked: false,
       disabled: false,
     };
@@ -62,18 +64,18 @@ class Checkbox extends Component {
   render() {
     const { checked, disabled } = this.state;
     return (
-      <Row className="rounded-containerrow" onClick={this.handleChange}>
+      <Row className="rounded-container__row" onClick={this.handleChange}>
         <div className="checkbox-container" >
-          <label className='checkbox-containerlabel'>
+          <label className='checkbox-container__label'>
             <input
               type="checkbox"
-              className="checkbox-containerinput"
+              className="checkbox-container__input"
               disabled={disabled}
               checked={checked}
               onChange={() => { }}
             />
             <span
-              className="checkbox-containerspan"
+              className="checkbox-container__span"
             />
           </label>
         </div>
