@@ -52,8 +52,10 @@ class App extends Component {
       }
       while (guessedNumbers.includes(nextQuestion));
       console.log('find nextQuestion', nextQuestion);
-      this.setState({ currentSelectedItemNumber: null, currentRightItemNumber: nextQuestion, showModal: false });
-    } else this.setState({ currentSelectedItemNumber: null, showModal: true });
+      this.setState({
+        currentSelectedItemNumber: null, currentRightItemNumber: nextQuestion, showModal: false, isCurrentBirdGuessed: false,
+      });
+    } else this.setState({ currentSelectedItemNumber: null, showModal: true, isCurrentBirdGuessed: false });
   };
 
   optionClick = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
