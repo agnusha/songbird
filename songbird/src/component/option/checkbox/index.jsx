@@ -31,15 +31,15 @@ class Checkbox extends Component {
     return null;
   }
 
-  _setGuessedBefore = (flag, id) => this.props.onClick(flag, id)
+  setGuessedBefore = (flag, id) => this.props.onClick(flag, id)
 
-  _handleChange = () => {
+  handleChange = () => {
     const { id, currentRightItemNumber } = this.props;
     let guessedBefore;
     if (this.state.disabled === false) {
       // right
       if (id === (currentRightItemNumber + 1)) {
-        guessedBefore = this._setGuessedBefore(false, id);
+        guessedBefore = this.setGuessedBefore(false, id);
         if (!guessedBefore) {
           this.setState({
             checked: !this.state.checked,
@@ -49,31 +49,31 @@ class Checkbox extends Component {
       }
       // wrong
       else {
-        guessedBefore = this._setGuessedBefore(true, id);
+        guessedBefore = this.setGuessedBefore(true, id);
         if (!guessedBefore) {
           this.setState({
             disabled: !this.state.disabled,
           });
         }
       }
-    } else this._setGuessedBefore(false, id);
+    } else this.setGuessedBefore(false, id);
   };
 
   render() {
     const { checked, disabled } = this.state;
     return (
-      <Row className="rounded-container__row" onClick={this._handleChange}>
+      <Row className="rounded-containerrow" onClick={this.handleChange}>
         <div className="checkbox-container" >
-          <label className='checkbox-container__label'>
+          <label className='checkbox-containerlabel'>
             <input
               type="checkbox"
-              className="checkbox-container__input"
+              className="checkbox-containerinput"
               disabled={disabled}
               checked={checked}
               onChange={() => { }}
             />
             <span
-              className="checkbox-container__span"
+              className="checkbox-containerspan"
             />
           </label>
         </div>
