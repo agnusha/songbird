@@ -105,19 +105,19 @@ class App extends Component {
               ></Description>
             </Col>
           </Row>
-          {guessed
-            && <Row>
-              <Button
-                className="songbird-app__button"
-                size="lg"
-                block
-                onClick={this.nextQuestionClick}>
-                Далее
+          <Row>
+            <Button
+              className="songbird-app__button"
+              size="lg"
+              block
+              disabled={!guessed}
+              onClick={this.nextQuestionClick}>
+              Далее
             </Button>
-            </Row>
-          }
+          </Row>
+
           <ModalResult score={score} maxResult={sixWorkingItems.length * 5}
-            showModal={showModal} onClick={this.modalButtonClick}></ModalResult>
+            showModal={showModal} onClick={this.modalButtonClick} />
         </Container>
       </div>
     );
