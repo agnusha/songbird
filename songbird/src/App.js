@@ -43,15 +43,17 @@ class App extends Component {
   };
 
   nextQuestionClick = () => {
-    let nextQuestion;
-    do {
-      nextQuestion = Math.floor(Math.random() * 6);
-    }
-    while (this.state.guessedNumbers.includes(nextQuestion));
-    console.log('find nextQuestion');
-    console.log(nextQuestion);
+    const { guessedNumbers } = this.state;
 
-    this.setState({ currentRightItemNumber: nextQuestion, showModal: true });
+    if (guessedNumbers.length < 6) {
+      let nextQuestion;
+      do {
+        nextQuestion = Math.floor(Math.random() * 6);
+      }
+      while (guessedNumbers.includes(nextQuestion));
+      console.log('find nextQuestion', nextQuestion);
+      this.setState({ currentSelectedItemNumber: null, currentRightItemNumber: nextQuestion, showModal: false });
+    } else this.setState({ currentSelectedItemNumber: null, showModal: true });
   };
 
   optionClick = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
