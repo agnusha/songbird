@@ -38,6 +38,12 @@ body {
         }
 
         .songbird-app__button {
+            &:disabled {
+                background: $light-grey;
+                border: 2px solid $light-grey;
+                color: $danger;
+                cursor: initial;
+            }
             text-transform: uppercase;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             border: 2px solid $danger;
@@ -46,9 +52,10 @@ body {
             letter-spacing: 0.3rem;
             margin-bottom: 10px;
 
-            &:hover {
+            &:hover:enabled {
                 background: white;
                 color: $danger;
+                border: 2px solid $danger;
             }
         }
 

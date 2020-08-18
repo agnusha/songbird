@@ -68,7 +68,7 @@ class App extends Component {
 
   render() {
     const {
-      currentRightItemNumber, currentSelectedItemNumber, guessed, guessedNumbers, score, showModal, category,
+      currentRightItemNumber, currentSelectedItemNumber, guessed, score, showModal, category,
     } = this.state;
     const sixWorkingItems = birdsData[category];
 
