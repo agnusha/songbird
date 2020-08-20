@@ -61,8 +61,8 @@ class Option extends Component {
 
     return (
       <Container className="rounded-container option main-container">
-        {items.map((item, i) => <Checkbox key={i} id={item.id} name={item.name}
-          onClick={this.selectOption} currentRightItemNumber={currentRightItemNumber}></Checkbox>)}
+        {items.map((item, i) => <Checkbox key={i} id={item.id} name={item.name} currentRightItemNumber={currentRightItemNumber}
+          onClick={this.selectOption} />)}
 
         <audio src={rightAnswer} ref={this.audioRefCorrect} />
         <audio src={wrongAnswer} ref={this.audioRefIncorrect} />
