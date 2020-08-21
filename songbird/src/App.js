@@ -99,6 +99,7 @@ class App extends Component {
             <Col sm={5} className="p-0 mb-5">
               <Option
                 items={sixWorkingItems}
+                isCurrentBirdGuessed={isCurrentBirdGuessed}
                 currentRightItemNumber={currentRightItemNumber}
                 onClick={this.optionClick}>
               </Option>

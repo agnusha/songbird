@@ -12,6 +12,7 @@ class Option extends Component {
   static propTypes = {
     items: PropTypes.array,
     currentRightItemNumber: PropTypes.number,
+    isCurrentBirdGuessed: PropTypes.bool,
     onClick: PropTypes.func,
   };
 
@@ -25,30 +26,30 @@ class Option extends Component {
     this.audioRefIncorrect = React.createRef();
   }
 
-  playAudio = (wrongAndshouldAddTries, guessed) => {
+  playAudio = (isNowRightAnswer, guessed) => {
     if (!guessed) {
-      if (wrongAndshouldAddTries) {
-        this.audioRefIncorrect.current.play();
-      } else {
+      if (isNowRightAnswer) {
         this.audioRefCorrect.current.play();
+      } else {
+        this.audioRefIncorrect.current.play();
       }
     }
   };
 
-  setTries = (wrongAndshouldAddTries) => {
-    if (wrongAndshouldAddTries) {
+  setTries = (isNowRightAnswer) => {
+    if (!isNowRightAnswer) {
       const currentWrongAnswerCount = this.state.wrongAnswerCount + 1;
       this.setState({ wrongAnswerCount: currentWrongAnswerCount });
     }
   };
 
-  selectOption = (wrongAndshouldAddTries, selectedBirdId) => {
+  selectOption = (isNowRightAnswer, selectedBirdId) => {
     const guessedBefore = this.state.guessed;
-    const guessedNow = this.state.guessed ? true : !wrongAndshouldAddTries;
+    const guessedNow = isNowRightAnswer;
     this.setState({ guessed: guessedNow });
 
-    this.setTries(wrongAndshouldAddTries);
-    this.playAudio(wrongAndshouldAddTries, guessedBefore);
+    this.setTries(isNowRightAnswer);
+    this.playAudio(isNowRightAnswer, guessedBefore);
 
     this.props.onClick(selectedBirdId - 1, guessedNow !== guessedBefore, guessedNow, this.state.wrongAnswerCount);
     return guessedBefore;
@@ -56,12 +57,13 @@ class Option extends Component {
 
   render() {
     const {
-      items, currentRightItemNumber,
+      items, currentRightItemNumber, isCurrentBirdGuessed,
     } = this.props;
 
     return (
       <Container className="rounded-container option main-container">
-        {items.map((item, i) => <Checkbox key={i} id={item.id} name={item.name} currentRightItemNumber={currentRightItemNumber}
+        {items.map((item, i) => <Checkbox key={i} id={item.id} name={item.name}
+          currentRightItemNumber={currentRightItemNumber} isCurrentBirdGuessed={isCurrentBirdGuessed}
           onClick={this.selectOption} />)}
 
         <audio src={rightAnswer} ref={this.audioRefCorrect} />
