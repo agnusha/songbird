@@ -45,7 +45,7 @@ class ModalResult extends Component {
                 <div>
                   Вы набрали максимум баллов ({score}).
                   </div>
-                <img className="best-result_img" alt="best result"></img>
+                <div className="best-result_img"></div>
               </div>
               : <p>
                 Вы набрали {score} баллов из {maxResult} возможных.
