@@ -53,7 +53,7 @@ class ModalResult extends Component {
             }
           </div>
           <div className="modal-footer">
-            {(score === maxResult)
+            {(score < maxResult)
               && <Button variant="secondary" onClick={this.handleCloseAgain}>
                 Пройти еще раз
             </Button>}

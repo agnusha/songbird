@@ -13,28 +13,17 @@ import ModalResult from './component/modal/index';
 import birdsData from './data/birds';
 
 class App extends Component {
-  static defaultProps = {
-    currentRightItemNumber: Math.floor(Math.random() * 6),
-    currentSelectedItemNumber: null,
-    isCurrentBirdGuessed: false,
-    guessedNumbers: [],
-    score: 0,
-    showModal: false,
-    category: 0,
-    currentWrongAnswerCount: 0,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
-      currentRightItemNumber: props.currentRightItemNumber,
-      currentSelectedItemNumber: props.currentSelectedItemNumber,
-      isCurrentBirdGuessed: props.isCurrentBirdGuessed,
-      guessedNumbers: props.guessedNumbers,
-      score: props.score,
-      showModal: props.showModal,
-      category: props.category,
-      currentWrongAnswerCount: props.currentWrongAnswerCount,
+      currentRightItemNumber: Math.floor(Math.random() * 6),
+      currentSelectedItemNumber: null,
+      isCurrentBirdGuessed: false,
+      guessedNumbers: [],
+      score: 0,
+      showModal: false,
+      category: 0,
+      currentWrongAnswerCount: 0,
     };
   }
 
@@ -43,8 +32,6 @@ class App extends Component {
       currentSelectedItemNumber: null, isCurrentBirdGuessed: false, score: 0, category, currentWrongAnswerCount: 0
     });
   };
-
-
 
   nextQuestionClick = () => {
     const { guessedNumbers } = this.state;
@@ -77,8 +64,9 @@ class App extends Component {
     this.setState({ currentSelectedItemNumber: --selectedBirdId });
   };
 
-  modalButtonClick = (showModal) => {
-    this.setState({ showModal });
+  modalButtonClick = (repeatThisCategory) => {
+    this.setState({ showModal: false });
+    if (repeatThisCategory) this.categoryClick(this.state.category);
   };
 
   render() {
