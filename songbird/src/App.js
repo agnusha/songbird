@@ -21,6 +21,7 @@ class App extends Component {
     score: 0,
     showModal: false,
     category: 0,
+    currentWrongAnswerCount: 0,
   };
 
   constructor(props) {
@@ -33,6 +34,7 @@ class App extends Component {
       score: props.score,
       showModal: props.showModal,
       category: props.category,
+      currentWrongAnswerCount: props.currentWrongAnswerCount,
     };
   }
 
@@ -41,6 +43,8 @@ class App extends Component {
       currentSelectedItemNumber: null, isCurrentBirdGuessed: false, score: 0, category,
     });
   };
+
+
 
   nextQuestionClick = () => {
     const { guessedNumbers } = this.state;
@@ -53,17 +57,24 @@ class App extends Component {
       while (guessedNumbers.includes(nextQuestion));
       console.log('find nextQuestion', nextQuestion);
       this.setState({
-        currentSelectedItemNumber: null, currentRightItemNumber: nextQuestion, showModal: false, isCurrentBirdGuessed: false,
+        currentSelectedItemNumber: null, currentRightItemNumber: nextQuestion,
+        showModal: false, isCurrentBirdGuessed: false, currentWrongAnswerCount: 0
       });
-    } else this.setState({ currentSelectedItemNumber: null, showModal: true, isCurrentBirdGuessed: false });
+    } else this.setState({ currentSelectedItemNumber: null, showModal: true, isCurrentBirdGuessed: false, currentWrongAnswerCount: 0 });
   };
 
-  optionClick = (selectedBirdNumber, changeGuessed, guessed, wrongAnswerCount) => {
-    const newScore = changeGuessed ? this.state.score + 5 - wrongAnswerCount : this.state.score;
-    this.setState({ currentSelectedItemNumber: selectedBirdNumber, isCurrentBirdGuessed: guessed, score: newScore });
-    if (guessed && changeGuessed) {
-      this.setState((state) => ({ guessedNumbers: [...state.guessedNumbers, selectedBirdNumber] }));
+  optionClick = (isItWasAnswer, isNowRightAnswer, selectedBirdId) => {
+    if (isItWasAnswer && !this.state.isCurrentBirdGuessed) {
+      if (isNowRightAnswer)
+        this.setState((state) => ({
+          guessedNumbers: [...state.guessedNumbers, selectedBirdId],
+          isCurrentBirdGuessed: isNowRightAnswer,
+          score: state.score + 5 - state.currentWrongAnswerCount
+        }));
+      else
+        this.setState((state) => ({ currentWrongAnswerCount: state.currentWrongAnswerCount + 1 }));
     }
+    this.setState({ currentSelectedItemNumber: --selectedBirdId });
   };
 
   modalButtonClick = (showModal) => {
@@ -78,8 +89,6 @@ class App extends Component {
 
     console.log('state');
     console.log(this.state);
-    console.log('------------ sixWorkingItems -----------');
-    console.log(sixWorkingItems);
 
     return (
       <div className="songbird-app">

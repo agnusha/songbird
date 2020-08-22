@@ -34,21 +34,18 @@ class Checkbox extends Component {
     return null;
   }
 
-  setGuessedBefore = (isNowRightAnswer, selectedBirdId) => this.props.onClick(isNowRightAnswer, selectedBirdId)
-
   handleChange = () => {
-    const { id, currentRightItemNumber } = this.props;
+    const { id, currentRightItemNumber, isCurrentBirdGuessed } = this.props;
+    const isNowRightAnswer = id === (currentRightItemNumber + 1);
 
-    if (this.state.disabled === false) {
-      const isNowRightAnswer = id === (currentRightItemNumber + 1);
-      const guessedBefore = this.setGuessedBefore(isNowRightAnswer, id);
-      if (!guessedBefore) {
-        this.setState({
-          checked: isNowRightAnswer,
-          disabled: true,
-        });
-      }
-    } else this.setGuessedBefore(true, id);
+    if (!isCurrentBirdGuessed && !this.state.disabled) {
+      this.setState({
+        checked: isNowRightAnswer,
+        disabled: true,
+      });
+    }
+
+    this.props.onClick(!this.state.disabled, isNowRightAnswer, id)
   };
 
   render() {
