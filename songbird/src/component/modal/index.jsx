@@ -14,9 +14,12 @@ class ModalResult extends Component {
     onClick: PropTypes.func,
   };
 
-
-  handleClose = () => {
+  handleCloseOk = () => {
     return this.props.onClick(false);
+  }
+
+  handleCloseAgain = () => {
+    return this.props.onClick(true);
   }
 
   render() {
@@ -50,10 +53,12 @@ class ModalResult extends Component {
             }
           </div>
           <div className="modal-footer">
-            <Button variant="secondary" onClick={this.handleClose}>
-              Пройти еще раз
-            </Button>
-            <Button variant="primary" onClick={this.handleClose}>
+            {(score === maxResult)
+              && <Button variant="secondary" onClick={this.handleCloseAgain}>
+                Пройти еще раз
+            </Button>}
+
+            <Button variant="primary" onClick={this.handleCloseOk}>
               Ок
             </Button>
           </div>

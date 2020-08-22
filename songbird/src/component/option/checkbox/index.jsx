@@ -25,6 +25,7 @@ class Checkbox extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.name !== prevState.name || nextProps.currentRightItemNumber !== prevState.currentRightItemNumber) {
       return {
+        id: nextProps.id,
         name: nextProps.name,
         currentRightItemNumber: nextProps.currentRightItemNumber,
         checked: false,

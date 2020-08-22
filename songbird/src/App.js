@@ -40,7 +40,7 @@ class App extends Component {
 
   categoryClick = (category) => {
     this.setState({
-      currentSelectedItemNumber: null, isCurrentBirdGuessed: false, score: 0, category,
+      currentSelectedItemNumber: null, isCurrentBirdGuessed: false, score: 0, category, currentWrongAnswerCount: 0
     });
   };
 
