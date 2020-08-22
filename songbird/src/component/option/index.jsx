@@ -24,9 +24,6 @@ class Option extends Component {
   }
 
   playAudio = (isNowRightAnswer) => {
-    if (this.props.isCurrentBirdGuessed)
-      return;
-
     if (isNowRightAnswer) {
       this.audioRefCorrect.current.play();
     } else {
@@ -35,7 +32,7 @@ class Option extends Component {
   };
 
   selectOption = (isItWasAnswer, isNowRightAnswer, selectedBirdId) => {
-    this.playAudio(isItWasAnswer);
+    if (!this.props.isCurrentBirdGuessed) this.playAudio(isNowRightAnswer);
     this.props.onClick(isItWasAnswer, isNowRightAnswer, selectedBirdId);
   };
 
