@@ -14,6 +14,19 @@ class Question extends Component {
     guessed: PropTypes.bool,
   };
 
+  constructor(props) {
+    super(props);
+    this.player = React.createRef();
+  };
+
+  componentDidUpdate(prevProps) {
+    console.log(this.player.current.audio.current)
+
+    if (!prevProps.guessed && this.props.guessed) {
+      this.player.current.audio.current.pause();
+    }
+  }
+
   render() {
     const { bird, guessed } = this.props;
 
@@ -29,7 +42,7 @@ class Question extends Component {
           </Col>
           <Col>
             <h4>{guessed ? bird.name : "*******"}</h4>
-            <AudioPlayer autoPlayAfterSrcChange={false} src={bird.audio} />
+            <AudioPlayer ref={this.player} autoPlayAfterSrcChange={false} src={bird.audio} />
           </Col>
         </Row>
       </Container>
