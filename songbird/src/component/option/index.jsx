@@ -32,7 +32,9 @@ class Option extends Component {
   };
 
   selectOption = (isItWasAnswer, isNowRightAnswer, selectedBirdId) => {
-    if (!this.props.isCurrentBirdGuessed) this.playAudio(isNowRightAnswer);
+    if (!this.props.isCurrentBirdGuessed) {
+      this.playAudio(isNowRightAnswer);
+    }
     this.props.onClick(isItWasAnswer, isNowRightAnswer, selectedBirdId);
   };
 
