@@ -31,10 +31,6 @@ class App extends Component {
     };
   };
 
-  categoryClick = (category) => {
-    this.setState(this.getDefaultState(category));
-  };
-
   nextQuestionClick = () => {
     const { guessedNumbers } = this.state;
 
@@ -68,7 +64,9 @@ class App extends Component {
 
   modalButtonClick = (repeatThisCategory) => {
     this.setState({ showModal: false });
-    if (repeatThisCategory) this.categoryClick(this.state.category);
+    if (repeatThisCategory) {
+      this.setState(this.getDefaultState(category));
+    }
   };
 
   render() {
@@ -85,7 +83,6 @@ class App extends Component {
         <Header
           category={category}
           score={score}
-          onClick={this.categoryClick}
         ></Header>
         {showModal
           ? <ModalResult score={score} maxResult={sixWorkingItems.length * 5}
