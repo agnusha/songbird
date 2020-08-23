@@ -34,7 +34,7 @@ class ModalResult extends Component {
         <div className="modal-result__modal-content">
           <div className="modal-header">
             <h3>Результат</h3>
-            <button type="button" className="close" onClick={this.handleClose}>
+            <button type="button" className="close" onClick={this.handleCloseOk}>
               <span aria-hidden="true">&times;</span>
             </button>
           </div>

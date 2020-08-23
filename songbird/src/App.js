@@ -15,22 +15,24 @@ import birdsData from './data/birds';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.getDefaultState();
+  }
+
+  getDefaultState = (category) => {
+    return {
       currentRightItemNumber: Math.floor(Math.random() * 6),
       currentSelectedItemNumber: null,
       isCurrentBirdGuessed: false,
       guessedNumbers: [],
       score: 0,
       showModal: false,
-      category: 0,
+      category: category ? category : 0,
       currentWrongAnswerCount: 0,
     };
-  }
+  };
 
   categoryClick = (category) => {
-    this.setState({
-      currentSelectedItemNumber: null, isCurrentBirdGuessed: false, score: 0, category, currentWrongAnswerCount: 0
-    });
+    this.setState(this.getDefaultState(category));
   };
 
   nextQuestionClick = () => {
@@ -47,7 +49,7 @@ class App extends Component {
         currentSelectedItemNumber: null, currentRightItemNumber: nextQuestion,
         showModal: false, isCurrentBirdGuessed: false, currentWrongAnswerCount: 0
       });
-    } else this.setState({ currentSelectedItemNumber: null, showModal: true, isCurrentBirdGuessed: false, currentWrongAnswerCount: 0 });
+    } else this.setState({ showModal: true });
   };
 
   optionClick = (isItWasAnswer, isNowRightAnswer, selectedBirdId) => {
