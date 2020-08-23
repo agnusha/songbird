@@ -87,42 +87,46 @@ class App extends Component {
           score={score}
           onClick={this.categoryClick}
         ></Header>
-        <Container fluid className="container-content mt-4">
-          <Row className="mb-5">
-            <Question
-              bird={sixWorkingItems[currentRightItemNumber]}
-              guessed={isCurrentBirdGuessed}
-            ></Question>
-          </Row>
-          <Row className="justify-content-between">
-            <Col sm={5} className="p-0 mb-5">
-              <Option
-                items={sixWorkingItems}
-                isCurrentBirdGuessed={isCurrentBirdGuessed}
-                currentRightItemNumber={currentRightItemNumber}
-                onClick={this.optionClick}>
-              </Option>
-            </Col>
-            <Col sm={6} className="p-0 mb-5">
-              <Description
-                bird={currentSelectedItemNumber !== null ? sixWorkingItems[currentSelectedItemNumber] : null}
-              ></Description>
-            </Col>
-          </Row>
-          <Row>
-            <Button
-              className="songbird-app__button"
-              size="lg"
-              block
-              disabled={!isCurrentBirdGuessed}
-              onClick={this.nextQuestionClick}>
-              Далее
-            </Button>
-          </Row>
-
-          <ModalResult score={score} maxResult={sixWorkingItems.length * 5}
+        {showModal
+          ? <ModalResult score={score} maxResult={sixWorkingItems.length * 5}
             showModal={showModal} onClick={this.modalButtonClick} />
-        </Container>
+          : <Container fluid className="container-content mt-4">
+            <Row className="mb-5">
+              <Question
+                bird={sixWorkingItems[currentRightItemNumber]}
+                guessed={isCurrentBirdGuessed}
+              ></Question>
+            </Row>
+            <Row className="justify-content-between">
+              <Col sm={5} className="p-0 mb-5">
+                <Option
+                  items={sixWorkingItems}
+                  isCurrentBirdGuessed={isCurrentBirdGuessed}
+                  currentRightItemNumber={currentRightItemNumber}
+                  onClick={this.optionClick}>
+                </Option>
+              </Col>
+              <Col sm={6} className="p-0 mb-5">
+                <Description
+                  bird={currentSelectedItemNumber !== null ? sixWorkingItems[currentSelectedItemNumber] : null}
+                ></Description>
+              </Col>
+            </Row>
+            <Row>
+              <Button
+                className="songbird-app__button"
+                size="lg"
+                block
+                disabled={!isCurrentBirdGuessed}
+                onClick={this.nextQuestionClick}>
+                Далее
+            </Button>
+            </Row>
+          </Container>
+        }
+
+
+
       </div>
     );
   }
