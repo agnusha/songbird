@@ -6,13 +6,13 @@
 }
 
 .margined-col {
-  margin: 1vh 0px;
+  margin: 0.5vh 0px;
 }
 
 #basic-header {
   background: $white;
   background-color: $danger;
-  .header-row{
+  .header-row {
     align-items: center;
   }
 
@@ -28,6 +28,7 @@
       flex: auto;
       text-align: center;
       span {
+        padding: 0.5rem 0.65rem;
         cursor: pointer;
         color: $dark-blue;
         background-color: $white;

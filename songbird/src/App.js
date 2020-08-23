@@ -91,14 +91,14 @@ class App extends Component {
           ? <ModalResult score={score} maxResult={sixWorkingItems.length * 5}
             showModal={showModal} onClick={this.modalButtonClick} />
           : <Container fluid className="container-content mt-4">
-            <Row className="mb-5">
+            <Row className="mb-4">
               <Question
                 bird={sixWorkingItems[currentRightItemNumber]}
                 guessed={isCurrentBirdGuessed}
               ></Question>
             </Row>
             <Row className="justify-content-between">
-              <Col sm={5} className="p-0 mb-5">
+              <Col sm={4} className="p-0 mb-4">
                 <Option
                   items={sixWorkingItems}
                   isCurrentBirdGuessed={isCurrentBirdGuessed}
@@ -106,7 +106,7 @@ class App extends Component {
                   onClick={this.optionClick}>
                 </Option>
               </Col>
-              <Col sm={6} className="p-0 mb-5">
+              <Col sm={7} className="p-0 mb-4">
                 <Description
                   bird={currentSelectedItemNumber !== null ? sixWorkingItems[currentSelectedItemNumber] : null}
                 ></Description>

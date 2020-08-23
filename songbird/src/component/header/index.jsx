@@ -35,7 +35,7 @@ class Header extends Component {
     const { category } = this.state;
     return (
       <header className="header" id="basic-header">
-        <Container fluid className="px-5 py-2">
+        <Container fluid className="px-5 py-1">
           <Row className="header-row">
             <Col md="auto" className="margined-col">
               <img src={logo} className="songbird-logo my-auto" alt="logo" />
