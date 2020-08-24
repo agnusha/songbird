@@ -65,7 +65,7 @@ class App extends Component {
   modalButtonClick = (repeatThisCategory) => {
     this.setState({ showModal: false });
     if (repeatThisCategory) {
-      this.setState(this.getDefaultState(category));
+      this.setState(this.getDefaultState(0));
     }
   };
 
