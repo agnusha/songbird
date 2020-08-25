@@ -20,8 +20,6 @@ class Question extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    console.log(this.player.current.audio.current)
-
     if (!prevProps.guessed && this.props.guessed) {
       this.player.current.audio.current.pause();
     }
@@ -29,7 +27,6 @@ class Question extends Component {
 
   render() {
     const { bird, guessed } = this.props;
-
     return (
       <Container fluid className="rounded-container question">
         <Row>

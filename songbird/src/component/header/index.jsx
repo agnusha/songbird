@@ -12,12 +12,12 @@ import categories from "../../data/categories";
 
 class Header extends Component {
   static propTypes = {
-    category: PropTypes.number,
+    categoryId: PropTypes.number,
     score: PropTypes.number
   };
 
   render() {
-    const { score, categoryId } = this.props;
+    const { categoryId, score } = this.props;
     return (
       <header className="header" id="basic-header">
         <Container fluid className="px-5 py-1">

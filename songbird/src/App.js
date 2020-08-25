@@ -18,6 +18,17 @@ class App extends Component {
     this.state = this.getDefaultState();
   }
 
+  componentDidMount() {
+    console.log("В задании требование: для удобства проверки правильные ответы выведите в консоль.");
+    console.log("Первый правильный ответ", birdsData[this.state.categoryId][this.state.currentRightItemNumber].name);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.categoryId !== this.state.categoryId) {
+      console.log("Правильный ответ", birdsData[this.state.categoryId][this.state.currentRightItemNumber].name);
+    }
+  }
+
   getDefaultState = () => {
     return {
       categoryId: 0,
@@ -40,7 +51,7 @@ class App extends Component {
         nextQuestion = Math.floor(Math.random() * 6);
       }
       while (guessedNumbers.includes(nextQuestion));
-      console.log('find nextQuestion', nextQuestion);
+
       this.setState((state) => ({
         currentSelectedItemNumber: null, currentRightItemNumber: nextQuestion,
         showModal: false, isCurrentBirdGuessed: false, currentWrongAnswerCount: 0,
@@ -75,7 +86,6 @@ class App extends Component {
       currentRightItemNumber, currentSelectedItemNumber, isCurrentBirdGuessed, score, showModal, categoryId } = this.state;
     const sixWorkingItems = birdsData[categoryId];
 
-    console.log('state');
     console.log(this.state);
 
     return (
@@ -121,9 +131,6 @@ class App extends Component {
             </Row>
           </Container>
         }
-
-
-
       </div>
     );
   }
