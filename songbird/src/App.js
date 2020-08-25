@@ -18,16 +18,16 @@ class App extends Component {
     this.state = this.getDefaultState();
   }
 
-  getDefaultState = (category) => {
+  getDefaultState = () => {
     return {
+      categoryId: 0,
+      currentWrongAnswerCount: 0,
+      score: 0,
       currentRightItemNumber: Math.floor(Math.random() * 6),
       currentSelectedItemNumber: null,
       isCurrentBirdGuessed: false,
-      guessedNumbers: [],
-      score: 0,
       showModal: false,
-      category: category ? category : 0,
-      currentWrongAnswerCount: 0,
+      guessedNumbers: [],
     };
   };
 
@@ -41,10 +41,11 @@ class App extends Component {
       }
       while (guessedNumbers.includes(nextQuestion));
       console.log('find nextQuestion', nextQuestion);
-      this.setState({
+      this.setState((state) => ({
         currentSelectedItemNumber: null, currentRightItemNumber: nextQuestion,
-        showModal: false, isCurrentBirdGuessed: false, currentWrongAnswerCount: 0
-      });
+        showModal: false, isCurrentBirdGuessed: false, currentWrongAnswerCount: 0,
+        categoryId: state.categoryId + 1,
+      }));
     } else this.setState({ showModal: true });
   };
 
@@ -65,15 +66,14 @@ class App extends Component {
   modalButtonClick = (repeatThisCategory) => {
     this.setState({ showModal: false });
     if (repeatThisCategory) {
-      this.setState(this.getDefaultState(0));
+      this.setState(this.getDefaultState());
     }
   };
 
   render() {
     const {
-      currentRightItemNumber, currentSelectedItemNumber, isCurrentBirdGuessed, score, showModal, category,
-    } = this.state;
-    const sixWorkingItems = birdsData[category];
+      currentRightItemNumber, currentSelectedItemNumber, isCurrentBirdGuessed, score, showModal, categoryId } = this.state;
+    const sixWorkingItems = birdsData[categoryId];
 
     console.log('state');
     console.log(this.state);
@@ -81,7 +81,7 @@ class App extends Component {
     return (
       <div className="songbird-app">
         <Header
-          category={category}
+          categoryId={categoryId}
           score={score}
         ></Header>
         {showModal

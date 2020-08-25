@@ -10,13 +10,6 @@ class Category extends Component {
     onClick: PropTypes.func,
   };
 
-  clickCategory = () => {
-    if (typeof this.props.onClick === 'function') {
-      this.setState({ currentCategory: this.props.item.id });
-      return this.props.onClick(this.props.item.id);
-    }
-  }
-
   render() {
     const { item, active } = this.props;
 
@@ -24,8 +17,7 @@ class Category extends Component {
       <li id={item.id} className={classNames({
         'page-item': true,
         'active': active,
-      })}
-        onClick={this.clickCategory} >
+      })}>
         <span className="page-link">{item.name} </span>
       </li>
     );

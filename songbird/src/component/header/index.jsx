@@ -16,23 +16,8 @@ class Header extends Component {
     onClick: PropTypes.func
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      category: props.category,
-    };
-  };
-
-  sendCategoryToApp = (category) => {
-    this.setState({ category });
-    if (typeof this.props.onClick === 'function') {
-      return this.props.onClick(category);
-    }
-  };
-
   render() {
-    const { score } = this.props;
-    const { category } = this.state;
+    const { score, categoryId } = this.props;
     return (
       <header className="header" id="basic-header">
         <Container fluid className="px-5 py-1">
@@ -43,8 +28,7 @@ class Header extends Component {
             <Col md="auto" className="margined-col mr-auto">
               <ul className="pagination my-auto">
                 {categories.map((item, i) =>
-                  <Category key={i} item={item} active={category === i} onClick={this.sendCategoryToApp}>
-                  </Category>
+                  <Category key={i} item={item} active={categoryId === i} />
                 )}
               </ul>
             </Col>
