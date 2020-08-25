@@ -29,16 +29,11 @@
       text-align: center;
       span {
         padding: 0.5rem 0.65rem;
-        cursor: pointer;
+        cursor: default;
         color: $dark-blue;
         background-color: $white;
         border: none;
         text-transform: uppercase;
-
-        &:hover {
-          color: $white;
-          background-color: $dark-blue !important;
-        }
       }
       &.active span {
         background-color: $light-pink;
