@@ -86,8 +86,6 @@ class App extends Component {
       currentRightItemNumber, currentSelectedItemNumber, isCurrentBirdGuessed, score, showModal, categoryId } = this.state;
     const sixWorkingItems = birdsData[categoryId];
 
-    console.log(this.state);
-
     return (
       <div className="songbird-app">
         <Header
