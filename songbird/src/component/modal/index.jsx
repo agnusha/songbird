@@ -14,12 +14,8 @@ class ModalResult extends Component {
     onClick: PropTypes.func,
   };
 
-  handleCloseOk = () => {
-    return this.props.onClick(false);
-  }
-
   handleCloseAgain = () => {
-    return this.props.onClick(true);
+    return this.props.onClick();
   }
 
   render() {
@@ -34,9 +30,6 @@ class ModalResult extends Component {
         <div className="modal-result__modal-content">
           <div className="modal-header">
             <h3>Результат</h3>
-            <button type="button" className="close" onClick={this.handleCloseOk}>
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
 
           <div className="modal-body">
@@ -58,9 +51,6 @@ class ModalResult extends Component {
                 Пройти еще раз
             </Button>}
 
-            <Button variant="primary" onClick={this.handleCloseOk}>
-              Ок
-            </Button>
           </div>
         </div>
       </div>

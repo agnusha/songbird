@@ -74,11 +74,9 @@ class App extends Component {
     this.setState({ currentSelectedItemNumber: --selectedBirdId });
   };
 
-  modalButtonClick = (repeatThisCategory) => {
+  modalButtonClick = () => {
     this.setState({ showModal: false });
-    if (repeatThisCategory) {
-      this.setState(this.getDefaultState());
-    }
+    this.setState(this.getDefaultState());
   };
 
   render() {
