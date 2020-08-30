@@ -10,7 +10,7 @@ import Option from './component/option/index';
 import Description from './component/description/index';
 import ModalResult from './component/modal/index';
 
-import birdsData from './data/birds';
+import birdsData from './data/birdList';
 
 class App extends Component {
   constructor(props) {
